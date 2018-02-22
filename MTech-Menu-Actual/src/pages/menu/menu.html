@@ -1,0 +1,376 @@
+<ion-header>
+
+  <ion-navbar color="mtech-red">
+    <ion-title>MENU <ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!--Breakfast-->
+  <div *ngIf="breakfastTime">
+
+    <h2>Breakfast</h2>
+
+    <ion-card *ngIf="itsWednesday">
+
+        <div class="menuTitleBox">
+          <ion-card-title>Waffle</ion-card-title>
+        </div>
+        <div class="itemImage">
+        </div>
+        <ion-card-content>
+            <p style="font-size: 18px; color: black">Waffles that you can top</p>
+        </ion-card-content>
+      <div class="sidesOrder">
+        <ion-label>Price For Full: $3.15</ion-label>
+        <button ion-button color="light" (click)="order('Full Waffles', 3.15);">ADD</button>
+      </div>
+      <div class="sidesOrder">
+        <ion-label>Price For Half: 1.60</ion-label>
+        <button ion-button color="light" (click)="order('Half Waffle', 1.60);">ADD</button>
+      </div>
+
+    </ion-card>
+
+      <ion-card *ngIf="itsFriday">
+
+          <div class="menuTitleBox">
+              <ion-card-title>Biscuits And Gravy</ion-card-title>
+          </div>
+          <p>Price: ????</p>
+
+          <ion-card-content>
+              <p style="font-size: 18px; color: black">Warm biscuits and gravy</p>
+          </ion-card-content>
+
+          <button ion-button color="light" (click)="order('Biscuits And Gravy', 'Biscuits And Gravy ??????');">ADD TO ORDER</button>
+
+      </ion-card>
+
+    <ion-card>
+
+      <div class="menuTitleBox">
+        <ion-card-title>Breakfast Sandwich</ion-card-title>
+      </div>
+      <p>Price For Bagel: $2.75</p>
+      <p>Price For Croissant: $2.75</p>
+      <p>Price For Muffin: $2.50</p>
+
+        <img class="itemImage" src="https://goo.gl/rtJa8S">
+      <ion-card-content>
+
+        <p style="font-size: 18px; color: black">A breakfast sandwich with your choice of bread, egg, cheese, and meat</p>
+
+        <br>
+
+        <h2>Bread</h2>
+
+        <ion-list radio-group>
+          <ion-item>
+            <ion-label>Croissant</ion-label>
+            <ion-radio color="mtech-red" value="croissant"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Bagel</ion-label>
+            <ion-radio color="mtech-red" value="bagel"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>English Muffin</ion-label>
+            <ion-radio color="mtech-red" value="english muffin"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+        <br>
+
+        <h2>Number Of Eggs</h2>
+
+        <ion-list radio-group>
+          <ion-item>
+            <ion-label>1</ion-label>
+            <ion-radio color="mtech-red" value="1 egg"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>2</ion-label>
+            <ion-radio color="mtech-red" value="2 egg"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+        <br>
+
+        <h2>Style Of Egg</h2>
+
+        <ion-list radio-group>
+          <ion-item>
+            <ion-label>Scrambled</ion-label>
+            <ion-radio color="mtech-red" value="scrambled"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Over Easy</ion-label>
+            <ion-radio color="mtech-red" value="over easy"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Over Medium</ion-label>
+            <ion-radio color="mtech-red" value="over medium"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Over Hard</ion-label>
+            <ion-radio color="mtech-red" value="over hard"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+        <br>
+
+        <h2>Meat</h2>
+
+        <ion-list radio-group>
+          <ion-item>
+            <ion-label>Bacon(2)</ion-label>
+            <ion-radio color="mtech-red" value="bacon"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Sausage Patty</ion-label>
+            <ion-radio color="mtech-red" value="sausage patty"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Ham</ion-label>
+            <ion-radio color="mtech-red" value="ham"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>No Meat</ion-label>
+            <ion-radio color="mtech-red" value="no meat"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+        <br>
+
+        <h2>Cheese</h2>
+
+        <!--"cheddar", "provolone", "swiss", "pepper jack"-->
+
+        <ion-list radio-group>
+          <ion-item>
+            <ion-label>Cheddar</ion-label>
+            <ion-radio color="mtech-red" value="cheddar"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Provolone</ion-label>
+            <ion-radio color="mtech-red" value="provolone"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Swiss</ion-label>
+            <ion-radio color="mtech-red" value="swiss"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pepper Jack</ion-label>
+            <ion-radio color="mtech-red" value="pepper jack"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+      </ion-card-content>
+
+      <button ion-button color="light" (click)="order('Breakfast Sandwich', 'Breakfast Sandwich    $2.75');">ADD TO ORDER</button>
+
+
+
+    </ion-card>
+    <ion-card>
+
+      <div class="menuTitleBox">
+        <ion-card-title>Omelet</ion-card-title>
+      </div>
+      <p>Price: $2.95</p>
+
+        <img class="itemImage" src="https://goo.gl/wpex36">
+
+      <ion-card-content>
+
+        <p style="font-size: 18px; color: black">A 3 egg omelet with your choice of toppings</p>
+
+        <br>
+
+        <h2>Toppings (choose 5)</h2>
+
+        <ion-list>
+
+          <ion-item>
+            <ion-label>Peppers</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Mushrooms</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Onions</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Tomatoes</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Bacon</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Ham</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Sausage</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Cheddar Cheese</ion-label>
+            <ion-checkbox color="mtech-red"></ion-checkbox>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-card-content>
+
+
+      <button ion-button color="light" (click)="order('Omelet', 'Omelet    $2.95');">ADD TO ORDER</button>
+
+
+
+    </ion-card>
+
+    <ion-card *ngFor="let food of breakfastInfo">
+
+      <div class="menuTitleBox">
+        <ion-card-title>{{food.itemName}}</ion-card-title>
+      </div>
+      <p>Price: {{food.price | currency}}</p>
+
+        <img class="itemImage" src="{{food.imgUrl}}">
+
+      <ion-card-content>
+
+        <p style="font-size: 18px; color: black">{{food.description}}</p>
+
+        <br>
+
+        <ion-list>
+          <div radio-group>
+            <ion-item *ngFor="let foodOptions of food.options">
+              <ion-label>{{foodOptions}}</ion-label>
+              <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+
+      </ion-card-content>
+
+
+      <button ion-button color="light" (click)="order(food.itemName, food.itemName + ' ' + '$'+ food.price);">ADD TO ORDER</button>
+
+    </ion-card>
+
+    <button ion-button col="mtech-red" icon-end="md-restaurant" class="submit-button" (click)="ordersubmitted();"><p class="alignright">Submit Order</p></button>
+  </div>
+
+  <!--Lunch & Dinner-->
+  <div *ngIf="lunchTime">
+
+    <h2>Lunch And Dinner</h2>
+
+    <ion-card *ngFor="let food of lunchInfo">
+
+      <div class="menuTitleBox">
+        <ion-card-title>{{food.itemName}}</ion-card-title>
+      </div>
+      <p>Price: {{food.price | currency}}</p>
+      <img class="itemImage" src={{food.imgUrl}}>
+
+      <ion-card-content>
+
+        <p style="font-size: 18px; color: black">{{food.description}}</p>
+
+        <br>
+
+        <h2>make it a meal for a $1.00, mozzarella sticks an extra dollar</h2>
+        <ion-toggle color="mtech-red"></ion-toggle>
+
+        <ion-list>
+          <div radio-group [disabled]="disable">
+            <ion-item *ngFor="let foodOptions of food.options">
+              <ion-label>{{foodOptions}}</ion-label>
+              <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+
+
+        <button ion-button color="light" (click)="order(food.itemName, food.itemName + ' ' + '$' + food.price);">ADD TO ORDER</button>
+
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+
+      <div class="menuTitleBox">
+        <ion-card-title>Sides</ion-card-title>
+      </div>
+
+      <ion-card-content>
+
+        <ion-list>
+
+          <div class="sidesOrder">
+            <ion-label>French Fries $1.50</ion-label>
+
+            <button ion-button color="light" (click)="order('French Fries', 'French Fries   $1.50');">ADD</button>
+
+          </div>
+
+
+          <div class="sidesOrder">
+            <ion-label>Tatter Tots $1.50</ion-label>
+
+            <button ion-button color="light" (click)="order('Tater Tots', 'Tater Tots   $1.50');">ADD</button>
+
+          </div>
+
+          <div class="sidesOrder">
+            <ion-label>Sweat Potato Fries $1.75</ion-label>
+
+            <button ion-button color="light" (click)="order('Sweat Potato Fries','Sweat Potato Fries    $1.75');">ADD</button>
+
+          </div>
+
+          <div class="sidesOrder">
+            <ion-label>Onion Rings $1.50</ion-label>
+
+            <button ion-button color="light" (click)="order('Onion Rings', 'Onion Rings    $1.50');">ADD</button>
+
+          </div>
+
+          <div class="sidesOrder">
+            <ion-label>Mozzarella Sticks $1.50</ion-label>
+
+            <button ion-button color="light" (click)="order('Mozzarella Sticks', 'Mozzerella Sticks    $1.50');">ADD</button>
+
+          </div>
+
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
+    <button ion-button color="mtech-red" icon-end="md-restaurant" class="submit-button" (click)="ordersubmitted();"><p class="alignright">Submit Order</p></button>
+
+  </div>
+
+</ion-content>
+
