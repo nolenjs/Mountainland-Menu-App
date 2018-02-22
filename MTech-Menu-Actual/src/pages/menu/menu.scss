@@ -1,0 +1,45 @@
+page-menu {
+  ion-card{
+    .menuTitleBox{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      ion-card-title{
+        margin-right: 5px;
+      }
+    }
+    .ionCardTitle{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      ion-toggle{
+        margin-left: 10px;
+      }
+    }
+
+    .breakfast{
+      width: 100%;
+    }
+  }
+}
+.submit-button{
+  float:right
+}
+.sidesOrder{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  button{
+    height: 15px;
+  }
+  ion-label{
+    font-size: 17px;
+  }
+  .itemImage{
+    width: 50%;
+    margin: auto;
+  }
+}
