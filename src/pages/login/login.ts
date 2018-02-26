@@ -6,6 +6,7 @@ import 'firebase/auth';
 import {User} from "../../interfaces/IUser";
 import {MenuPage} from "../menu/menu";
 import {OrderSubmitPage} from "../order-submit/order-submit";
+import {DataService} from "../../providers/data.service";
 
 @Component({
   selector: 'page-login',
@@ -22,9 +23,14 @@ export class LoginPage {
   email: boolean = true;
 
   constructor(public afAuth: AngularFireAuth,
-    public navCtrl: NavController,
-    private navParams: NavParams,
-    private toastCtrl: ToastController) {
+              public navCtrl: NavController,
+              private navParams: NavParams,
+              private toastCtrl: ToastController,
+              private data: DataService) {
+  }
+
+  ngOnInit(){
+      this.data.currentMessage.subscribe(message => this.user.name = message)
   }
 
     async login(bool: boolean) {
@@ -56,15 +62,15 @@ export class LoginPage {
           let googleUser = result.user;
           console.log(googleUser);
           console.log(googleUser.displayName);
+          this.data.changeName(googleUser.displayName);
            if (this.navParams.data[0] === true){
                this.navCtrl.push(OrderSubmitPage, [
                    this.navParams.data[1],
                    this.navParams.data[2],
-                   googleUser.displayName
                ])
           }
           else{
-               this.navCtrl.push(MenuPage, [true, googleUser.displayName])
+               this.navCtrl.push(MenuPage, [true])
           }
       })
         .catch((error) => {
@@ -85,16 +91,15 @@ export class LoginPage {
                 this.user.email,
                 this.user.password
             );
-            this.displayResults(result);
-            let emailUser = firebase.auth().currentUser;
+              console.log(result);
+              let emailUser = firebase.auth().currentUser;
               console.log(emailUser);
-            emailUser.updateProfile({
-                displayName: this.firstName + ' ' + this.lastName,
-                photoURL: ""
-            });
-            this.user.account = emailUser;
-            console.log(this.user.account);
-              console.log(this.user.account.displayName);
+              emailUser.updateProfile({
+                  displayName: this.firstName + ' ' + this.lastName,
+                  photoURL: ""
+              });
+              this.data.changeName(emailUser.displayName);
+              this.displayResults(result);
           }
           catch (e) {
               this.showError(e)
@@ -116,16 +121,27 @@ export class LoginPage {
   }
 
     displayResults(result){
-    if (result) {
-        console.log("Registered or Signed in!!!");
-        console.log(this.user.name);
-      if (this.navParams.data[0] === true){
-        this.navCtrl.push(OrderSubmitPage, [this.navParams.data[1], this.navParams.data[2], this.user.account])
-      }
-      else{
-        this.navCtrl.push(MenuPage, [true, this.user.account]);
-      }
-    }
+        if (result){
+            console.log("Registered or Signed in!!!");
+            console.log(this.user.name);
+            if (this.navParams.data[0] === true){
+                this.navCtrl.push(OrderSubmitPage, [
+                    this.navParams.data[1],
+                    this.navParams.data[2],
+                ])
+            }
+            else{
+                this.navCtrl.push(MenuPage, [true]);
+            }
+        }
+        else{
+            let toast = this.toastCtrl.create({
+                message: "Please verify that your email or password is correct",
+                duration: 1800,
+                position: 'top'
+            });
+            toast.present()
+        }
   }
 
   showError(error){
