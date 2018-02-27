@@ -67,10 +67,10 @@
 
         <h2>Bread</h2>
 
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="breadType">
           <ion-item>
             <ion-label>Croissant</ion-label>
-            <ion-radio color="mtech-red" value="croissant"></ion-radio>
+            <ion-radio color="mtech-red" value="croissant" id="croissant"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Bagel</ion-label>
@@ -86,7 +86,7 @@
 
         <h2>Number Of Eggs</h2>
 
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="numberOfEggs">
           <ion-item>
             <ion-label>1</ion-label>
             <ion-radio color="mtech-red" value="1 egg"></ion-radio>
@@ -101,7 +101,7 @@
 
         <h2>Style Of Egg</h2>
 
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="styleOfEggs">
           <ion-item>
             <ion-label>Scrambled</ion-label>
             <ion-radio color="mtech-red" value="scrambled"></ion-radio>
@@ -124,7 +124,7 @@
 
         <h2>Meat</h2>
 
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="meat">
           <ion-item>
             <ion-label>Bacon(2)</ion-label>
             <ion-radio color="mtech-red" value="bacon"></ion-radio>
@@ -149,7 +149,7 @@
 
         <!--"cheddar", "provolone", "swiss", "pepper jack"-->
 
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="cheese">
           <ion-item>
             <ion-label>Cheddar</ion-label>
             <ion-radio color="mtech-red" value="cheddar"></ion-radio>
@@ -170,7 +170,7 @@
 
       </ion-card-content>
 
-      <button ion-button color="light" (click)="order('Breakfast Sandwich', 'Breakfast Sandwich    $2.75');">ADD TO ORDER</button>
+      <button ion-button color="light" (click)="order('Breakfast Sandwich', 'Breakfast Sandwich $2.75');">ADD TO ORDER</button>
 
 
 
@@ -193,45 +193,9 @@
         <h2>Toppings (choose 5)</h2>
 
         <ion-list>
-
-          <ion-item>
-            <ion-label>Peppers</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Mushrooms</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Onions</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Tomatoes</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Bacon</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Ham</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Sausage</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Cheddar Cheese</ion-label>
-            <ion-checkbox color="mtech-red"></ion-checkbox>
+          <ion-item *ngFor="let topping of omeletToppings">
+            <ion-label>{{topping.name}}</ion-label>
+            <ion-checkbox color="mtech-red" [(ngModel)]="topping.checked"></ion-checkbox>
           </ion-item>
 
         </ion-list>
@@ -261,7 +225,7 @@
         <br>
 
         <ion-list>
-          <div radio-group>
+          <div radio-group [(ngModel)]="foodOptions">
             <ion-item *ngFor="let foodOptions of food.options">
               <ion-label>{{foodOptions}}</ion-label>
               <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>
@@ -302,7 +266,7 @@
         <ion-toggle color="mtech-red"></ion-toggle>
 
         <ion-list>
-          <div radio-group [disabled]="disable">
+          <div radio-group [(ngModel)]="foodOptions">
             <ion-item *ngFor="let foodOptions of food.options">
               <ion-label>{{foodOptions}}</ion-label>
               <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>

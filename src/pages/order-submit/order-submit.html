@@ -1,9 +1,15 @@
+<script defer src="/static/fontawesome/fontawesome-all.js"></script>
+
 <ion-header>
 
     <ion-navbar color="mtech-red">
-        <ion-title>Confirm Order</ion-title> 
-          <ion-buttons end><ion-icon ios="ios-home" md="md-home" ></ion-icon></ion-buttons>
-         
+        <ion-title>Confirm Order 
+
+</ion-title>
+
+<button ion-buttons class="home-button" (click)="home()" end>
+    <ion-icon ios="ios-home" md="md-home"></ion-icon>
+</button>
     
     </ion-navbar>
 
@@ -24,7 +30,7 @@
         <ion-list>
 
             <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
-                <ion-icon md="md-remove-circle" id={{item.id}} (click)="delete(i)">
+                <ion-icon md="md-remove-circle" id="{{item.id}}" (click)="delete(i)">
 
                 </ion-icon>
                 {{item}}

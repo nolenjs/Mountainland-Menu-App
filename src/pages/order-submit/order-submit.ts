@@ -6,6 +6,7 @@ import {
   ToastController
 } from "ionic-angular";
 import { AngularFireDatabase } from "angularfire2/database";
+import { HomePage } from "../home/home";
 
 /**
  * Generated class for the OrderSubmitPage page.
@@ -45,6 +46,8 @@ import { AngularFireDatabase } from "angularfire2/database";
             visibility: visible;
         }
 
+        
+
 
 
     `
@@ -63,6 +66,10 @@ export class OrderSubmitPage {
   ) {
     this.orderInformation = this.navParams.data[0];
     this.name = this.navParams.data[1];
+  }
+
+  home() {
+    this.navCtrl.push(HomePage, this.navParams[1]);
   }
 
   confirm() {
