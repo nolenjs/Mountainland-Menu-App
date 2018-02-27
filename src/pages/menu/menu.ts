@@ -30,6 +30,14 @@ export class MenuPage {
   private itsWednesday = false;
   private itsFriday = false;
 
+  private breadType;
+  private numberOfEggs;
+  private styleOfEggs;
+  private meat;
+  private cheese;
+
+  private breakfastaOptions;
+
 
   hour = new Date().getHours();
   minutes = new Date().getMinutes();
@@ -44,6 +52,41 @@ export class MenuPage {
   orderPrice = [];
   orderItems = [];
   date = new Date();
+
+    omeletToppings = [
+        {
+            name: 'Peppers',
+            checked: false
+        },
+        {
+            name: 'Mushrooms',
+            checked: false
+        },
+        {
+            name: 'Onions',
+            checked: false
+        },
+        {
+            name: 'Tomatoes',
+            checked: false
+        },
+        {
+            name: 'Bacon',
+            checked: false
+        },
+        {
+            name: 'Ham',
+            checked: false
+        },
+        {
+            name: 'Sausage',
+            checked: false
+        },
+        {
+            name: 'Cheddar Cheese',
+            checked: false
+        },
+    ];
 
   constructor(
     public navCtrl: NavController,
@@ -104,7 +147,7 @@ export class MenuPage {
 
       this.menuChecker();
 
-    }, 60000000);//60000
+    }, 60000);//60000 for a minute
   }
 
   getBreakfast() {
@@ -128,6 +171,28 @@ export class MenuPage {
 
     this.orderItems.push(item);
 
+    if(itemName === 'Breakfast Sandwich'){
+        this.orderItems.push(`${this.breadType}, ${this.numberOfEggs}, ${this.styleOfEggs}, ${this.meat}, ${this.cheese}`);
+
+        this.breadType = '' ;
+        this.numberOfEggs = '';
+        this.styleOfEggs = '' ;
+        this.meat= '' ;
+        this.cheese = '';
+    }
+
+    else if(itemName === 'Omelet'){
+        for(let i = 0; i< this.omeletToppings.length; i++){
+            if(this.omeletToppings[i].checked === true) {
+                this.orderItems.push(this.omeletToppings[i].name);
+            }
+        }
+    }
+
+    else {
+        this.orderItems.push(this.breakfastaOptions);
+        this.breakfastaOptions = '';
+    }
 
     let toast = this.toastCtrl.create({
       message: `Your order of ${itemName} has been added`,
@@ -157,6 +222,10 @@ export class MenuPage {
       this.navCtrl.push(LoginPage, [true, {items: this.orderItems}, this.orderPrice])
     }
 
+  }
+
+  omeletItems(items){
+      console.log('items: '+ items );
   }
 
 }
