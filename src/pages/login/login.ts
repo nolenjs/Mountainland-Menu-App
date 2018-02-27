@@ -6,7 +6,7 @@ import 'firebase/auth';
 import {User} from "../../interfaces/IUser";
 import {MenuPage} from "../menu/menu";
 import {OrderSubmitPage} from "../order-submit/order-submit";
-import {DataService} from "../../providers/data.service";
+
 
 @Component({
   selector: 'page-login',
@@ -26,12 +26,10 @@ export class LoginPage {
               public navCtrl: NavController,
               private navParams: NavParams,
               private toastCtrl: ToastController,
-              private data: DataService) {
+              ) {
   }
 
-  ngOnInit(){
-      this.data.currentMessage.subscribe(message => this.user.name = message)
-  }
+  
 
     async login(bool: boolean) {
     this.email = bool;
@@ -55,14 +53,13 @@ export class LoginPage {
           if (result.credential) {
 
               // This gives you a Google Access Token. You can use it to access the Google API.
-              let token = result.credential.accessToken;
+            //   let token = result.credential.accessToken;
               // ...
           }
           // The signed-in user info.
           let googleUser = result.user;
           console.log(googleUser);
           console.log(googleUser.displayName);
-          this.data.changeName(googleUser.displayName);
            if (this.navParams.data[0] === true){
                this.navCtrl.push(OrderSubmitPage, [
                    this.navParams.data[1],
@@ -98,7 +95,6 @@ export class LoginPage {
                   displayName: this.firstName + ' ' + this.lastName,
                   photoURL: ""
               });
-              this.data.changeName(emailUser.displayName);
               this.displayResults(result);
           }
           catch (e) {
