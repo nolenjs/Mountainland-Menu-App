@@ -55,12 +55,11 @@ firebase.initializeApp(config);
     OrderSubmitPage
   ],
   providers: [
-    StatusBar,
+      StatusBar,
       AngularFireDatabase,
-
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MenuApiProvider,
+      SplashScreen,
+      {provide: ErrorHandler, useClass: IonicErrorHandler},
+      MenuApiProvider,
   ]
 })
 export class AppModule {}

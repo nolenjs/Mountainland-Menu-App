@@ -62,7 +62,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
-    this.name = this.navParams.data[2];
+    this.name = this.navParams.data[1];
   }
 
   confirm() {

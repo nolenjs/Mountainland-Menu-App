@@ -3,6 +3,7 @@ import {AlertController, NavController, NavParams, ToastController} from 'ionic-
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {LoginPage} from "../login/login";
+import * as firebase from 'firebase/app';
 
 /**
  * Generated class for the MenuPage page.
@@ -141,22 +142,25 @@ export class MenuPage {
   }
 
 
-
   ordersubmitted(){
-    if (this.navParams.data[0] === true){
-        console.log(this.navParams[1]);
-      this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.navParams[1]])
-    }
-    else{
-      let alert = this.alertCtrl.create({
-        title: 'Before You Submit...',
-        subTitle: 'You first need to login or register!!',
-        buttons: ['OK']
-      });
-      alert.present();
-      this.navCtrl.push(LoginPage, [true, {items: this.orderItems}, this.orderPrice])
-    }
+      firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+              // User is signed in.
+              console.log(user.displayName);
+              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, user.displayName])
+          } else {
+              // User is signed out.
+              let alert = this.alertCtrl.create({
+                  title: 'Before You Submit...',
+                  subTitle: 'You first need to login or register!!',
+                  buttons: ['OK']
+              });
+              alert.present();
+              //False means that user isn't logged in yet
+              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}, user.displayName])
+          }
 
+      });
   }
 
 }

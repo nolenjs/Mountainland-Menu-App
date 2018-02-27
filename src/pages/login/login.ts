@@ -6,153 +6,155 @@ import 'firebase/auth';
 import {User} from "../../interfaces/IUser";
 import {MenuPage} from "../menu/menu";
 import {OrderSubmitPage} from "../order-submit/order-submit";
-import {DataService} from "../../providers/data.service";
 
-@Component({
+@Component ({
   selector: 'page-login',
   templateUrl: 'login.html',
   providers: [AngularFireAuth]
 })
-export class LoginPage {
+export class LoginPage{
 
-  user = {} as User;
-  confirm: string;
-  firstName: string;
-  lastName: string;
-  registering: boolean = false;
-  email: boolean = true;
+    //User, confirmPassword, registerOrSignInInputs, usingEmailOrGoogle
+    user = {} as User;
+    confirm: string;
+    firstName: string;
+    lastName: string;
+    registering: boolean = false;
+    email: boolean = true;
 
-  constructor(public afAuth: AngularFireAuth,
-              public navCtrl: NavController,
-              private navParams: NavParams,
-              private toastCtrl: ToastController,
-              private data: DataService) {
-  }
-
-  ngOnInit(){
-      this.data.currentMessage.subscribe(message => this.user.name = message)
-  }
-
-    async login(bool: boolean) {
-    this.email = bool;
-    //If using the email login and not the google login
-    if (this.email){
-
-        try {
-            const result = await this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
-            this.displayResults(result);
-            this.user.password = '';
-        }
-        catch (e) {
-            this.showError(e);
+      constructor(public afAuth: AngularFireAuth,
+                  public navCtrl: NavController,
+                  private navParams: NavParams,
+                  private toastCtrl: ToastController) {
       }
-    }
-    //If using the google login
-    else{
-      let provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider).then((result) => {
-          console.log(result);
-          if (result.credential) {
 
-              // This gives you a Google Access Token. You can use it to access the Google API.
-              let token = result.credential.accessToken;
-              // ...
+        async login(bool: boolean) {
+        this.email = bool;
+        //If using the email login and not the google login
+        if (this.email){
+            try {
+                const result = await this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
+                this.displayResults(result);
+                this.user.password = '';
+            }
+            catch (e) {
+                this.showError(e);
           }
-          // The signed-in user info.
-          let googleUser = result.user;
-          console.log(googleUser);
-          console.log(googleUser.displayName);
-          this.data.changeName(googleUser.displayName);
-           if (this.navParams.data[0] === true){
-               this.navCtrl.push(OrderSubmitPage, [
-                   this.navParams.data[1],
-                   this.navParams.data[2],
-               ])
+        }
+        //If using the google login
+        else{
+          let provider = new firebase.auth.GoogleAuthProvider();
+          firebase.auth().signInWithPopup(provider).then((result) => {
+              console.log(result);
+              // The signed-in user info.
+              let googleUser = result.user;
+              console.log(googleUser);
+              console.log(googleUser.displayName);
+               if (this.navParams.data[0] === true){
+                   this.navCtrl.push(OrderSubmitPage, [
+                       this.navParams.data[1],
+                       this.navParams.data[2],
+                   ])
+              }
+              else{
+                   this.navCtrl.push(MenuPage, [true])
+              }
+          })
+            .catch((error) => {
+              // Handle Errors here.
+              console.log(error.code);
+              console.log(error.message);
+              console.log(error.email);
+              console.log(error.credentials)
+            });
+        }
+      }
+
+
+        async register() {
+            if (this.confirm === this.user.password){
+              try {
+                const result = await this.afAuth.auth.createUserWithEmailAndPassword(
+                    this.user.email,
+                    this.user.password
+                );
+                  console.log(result);
+                  let emailUser = firebase.auth().currentUser;
+                  console.log(emailUser);
+                  emailUser.updateProfile({
+                      displayName: this.firstName + ' ' + this.lastName,
+                      photoURL: ""
+                  });
+                  this.displayResults(result);
+              }
+              catch (e) {
+                  this.showError(e)
+              }
+              console.log("Passwords matched");
           }
           else{
-               this.navCtrl.push(MenuPage, [true])
+            let toast = this.toastCtrl.create({
+              message: "Please verify that your passwords match.",
+              duration: 1800,
+              position: 'top'
+            });
+            toast.present()
           }
-      })
-        .catch((error) => {
-          // Handle Errors here.
-          console.log(error.code);
-          console.log(error.message);
-          console.log(error.email);
-          console.log(error.credentials)
-        });
-    }
-  }
-
-
-    async register() {
-        if (this.confirm === this.user.password){
-          try {
-            const result = await this.afAuth.auth.createUserWithEmailAndPassword(
-                this.user.email,
-                this.user.password
-            );
-              console.log(result);
-              let emailUser = firebase.auth().currentUser;
-              console.log(emailUser);
-              emailUser.updateProfile({
-                  displayName: this.firstName + ' ' + this.lastName,
-                  photoURL: ""
-              });
-              this.data.changeName(emailUser.displayName);
-              this.displayResults(result);
-          }
-          catch (e) {
-              this.showError(e)
-          }
-          console.log("Passwords matched");
+        }
+      changeShow(bool: boolean){
+        //If login
+        this.registering = bool;
       }
-      else{
+
+        displayResults(result){
+            if (result){
+                console.log("Signed in!!!");
+                console.log(this.user.name);
+                //the false means wasn't logged in earlier
+                if (this.navParams.data[0] === false){
+                    this.navCtrl.push(OrderSubmitPage, [
+                        this.navParams.data[1],
+                        this.navParams.data[2],
+                    ])
+                }
+                else{
+                    this.navCtrl.push(MenuPage);
+                }
+            }
+            else{
+                let toast = this.toastCtrl.create({
+                    message: "Please verify that your email or password is correct",
+                    duration: 1800,
+                    position: 'top'
+                });
+                toast.present()
+            }
+      }
+
+      showError(error){
+        console.error(error);
         let toast = this.toastCtrl.create({
-          message: "Please verify that your passwords match.",
+          message: error.message,
           duration: 1800,
           position: 'top'
         });
-        toast.present()
+        toast.present();
       }
-    }
-  changeShow(bool: boolean){
-    //If login
-    this.registering = bool;
-  }
 
-    displayResults(result){
-        if (result){
-            console.log("Registered or Signed in!!!");
-            console.log(this.user.name);
-            if (this.navParams.data[0] === true){
-                this.navCtrl.push(OrderSubmitPage, [
-                    this.navParams.data[1],
-                    this.navParams.data[2],
-                ])
-            }
-            else{
-                this.navCtrl.push(MenuPage, [true]);
-            }
-        }
-        else{
-            let toast = this.toastCtrl.create({
-                message: "Please verify that your email or password is correct",
-                duration: 1800,
-                position: 'top'
-            });
-            toast.present()
-        }
-  }
-
-  showError(error){
-    console.error(error);
-    let toast = this.toastCtrl.create({
-      message: error.message,
-      duration: 1800,
-      position: 'top'
-    });
-    toast.present();
-  }
+      logOut(){
+          firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+              let toast = this.toastCtrl.create({
+                  message: "Signed Out",
+                  duration: 1800,
+                  position: 'top'
+              });
+              toast.present()
+          }).catch(function(error) {
+              // An error happened.
+              this.showError(error.message);
+          });
+      }
 }
 
 
