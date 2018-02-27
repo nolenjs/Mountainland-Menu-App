@@ -10,6 +10,7 @@ export class DataService {
     constructor() { }
 
     changeName(message: string) {
+        console.log(message);
         this.messageSource.next(message)
     }
 
