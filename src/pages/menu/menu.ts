@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {AlertController, NavController, ToastController} from 'ionic-angular';
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {LoginPage} from "../login/login";
@@ -90,7 +90,6 @@ export class MenuPage {
 
   constructor(
     public navCtrl: NavController,
-    private navParams: NavParams,
     public menuProvider: MenuApiProvider,
     public toastCtrl: ToastController,
     public alertCtrl: AlertController) {
