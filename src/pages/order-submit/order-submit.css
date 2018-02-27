@@ -51,7 +51,7 @@ ion-card-content {
 .home-button {
     
     color: white;
-    /* float: right; */
+    float: right;
     margin-right: 900px;
 }
 
