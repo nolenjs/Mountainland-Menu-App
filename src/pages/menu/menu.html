@@ -225,7 +225,7 @@
         <br>
 
         <ion-list>
-          <div radio-group [(ngModel)]="breakfastaOptions">
+          <div radio-group [(ngModel)]="foodOptions">
             <ion-item *ngFor="let foodOptions of food.options">
               <ion-label>{{foodOptions}}</ion-label>
               <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>
@@ -266,7 +266,7 @@
         <ion-toggle color="mtech-red"></ion-toggle>
 
         <ion-list>
-          <div radio-group [disabled]="disable">
+          <div radio-group [(ngModel)]="foodOptions">
             <ion-item *ngFor="let foodOptions of food.options">
               <ion-label>{{foodOptions}}</ion-label>
               <ion-radio color="mtech-red" value="{{foodOptions}}"></ion-radio>
