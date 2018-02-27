@@ -27,6 +27,7 @@ let config = {
 };
 import {OrderSubmitPage} from "../pages/order-submit/order-submit";
 import {AngularFireDatabase} from 'angularfire2/database';
+import {DataService} from '../providers/data.service';
 
 firebase.initializeApp(config);
 
@@ -61,6 +62,7 @@ firebase.initializeApp(config);
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuApiProvider,
+      DataService
   ]
 })
 export class AppModule {}

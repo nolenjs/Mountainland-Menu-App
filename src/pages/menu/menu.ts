@@ -36,8 +36,7 @@ export class MenuPage {
   private meat;
   private cheese;
 
-  private breakfastaOptions;
-
+  private foodOptions;
 
   hour = new Date().getHours();
   minutes = new Date().getMinutes();
@@ -190,8 +189,8 @@ export class MenuPage {
     }
 
     else {
-        this.orderItems.push(this.breakfastaOptions);
-        this.breakfastaOptions = '';
+        this.orderItems.push(this.foodOptions);
+        this.foodOptions = '';
     }
 
     let toast = this.toastCtrl.create({
