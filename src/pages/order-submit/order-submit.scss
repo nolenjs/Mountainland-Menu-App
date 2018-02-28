@@ -49,13 +49,16 @@ ion-card-content {
 }
 
 .home-button {
-    
     color: white;
     float: right;
     // margin-right: 900px;
 }
+
+.sendButtonContainer{
+    background-color: blue;
+}
 .send-button {
-    // margin: auto;
+    margin: auto;
 }
 .sendButtonContainer{
     background-color: blue;
