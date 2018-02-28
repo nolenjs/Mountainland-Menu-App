@@ -31,8 +31,8 @@
         <ion-label floating>Confirm Password</ion-label>
         <ion-input type='password' [(ngModel)]='confirm'></ion-input>
       </ion-item>
-      <button ion-button *ngIf="registering===false" (click)="login(false)">Login through Google</button>
     </ion-list>
+    <button ion-button *ngIf="registering===false" color='light' (click)="login(false)">Google Login</button>
     <button *ngIf="registering === false" ion-button (click)="login(true)">Login</button>
     <button *ngIf="registering === false" ion-button color="light" (click)="changeShow(true)">Register</button>
     <button *ngIf="registering === true" ion-button (click)="register()">Register</button>
