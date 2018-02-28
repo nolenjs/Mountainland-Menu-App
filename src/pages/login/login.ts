@@ -7,6 +7,7 @@ import {User} from "../../interfaces/IUser";
 import {MenuPage} from "../menu/menu";
 import {OrderSubmitPage} from "../order-submit/order-submit";
 
+
 @Component ({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -22,11 +23,13 @@ export class LoginPage{
     registering: boolean = false;
     email: boolean = true;
 
+
       constructor(public afAuth: AngularFireAuth,
                   public navCtrl: NavController,
                   private navParams: NavParams,
                   private toastCtrl: ToastController) {
       }
+
 
         async login(bool: boolean) {
         this.email = bool;
@@ -64,6 +67,7 @@ export class LoginPage{
       }
 
 
+
         async register() {
             if (this.confirm === this.user.password){
               try {
@@ -84,6 +88,7 @@ export class LoginPage{
                   this.showError(e)
               }
               console.log("Passwords matched");
+
           }
           else{
             let toast = this.toastCtrl.create({
@@ -98,6 +103,7 @@ export class LoginPage{
         //If login
         this.registering = bool;
       }
+
 
         displayResults(result){
             if (result){
@@ -114,6 +120,7 @@ export class LoginPage{
                 });
                 toast.present()
             }
+
       }
 
       showError(error){
