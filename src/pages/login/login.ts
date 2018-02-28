@@ -50,15 +50,8 @@ export class LoginPage{
               let googleUser = result.user;
               console.log(googleUser);
               console.log(googleUser.displayName);
-               if (this.navParams.data[0] === true){
-                   this.navCtrl.push(OrderSubmitPage, [
-                       this.navParams.data[1],
-                       this.navParams.data[2],
-                   ])
-              }
-              else{
-                   this.navCtrl.push(MenuPage, [true])
-              }
+              //the false means wasn't logged in earlier
+              this.pushPage();
           })
             .catch((error) => {
               // Handle Errors here.
@@ -111,15 +104,7 @@ export class LoginPage{
                 console.log("Signed in!!!");
                 console.log(this.user.name);
                 //the false means wasn't logged in earlier
-                if (this.navParams.data[0] === false){
-                    this.navCtrl.push(OrderSubmitPage, [
-                        this.navParams.data[1],
-                        this.navParams.data[2],
-                    ])
-                }
-                else{
-                    this.navCtrl.push(MenuPage);
-                }
+                this.pushPage();
             }
             else{
                 let toast = this.toastCtrl.create({
@@ -141,19 +126,16 @@ export class LoginPage{
         toast.present();
       }
 
-      logOut(){
-          firebase.auth().signOut().then(function() {
-              // Sign-out successful.
-              let toast = this.toastCtrl.create({
-                  message: "Signed Out",
-                  duration: 1800,
-                  position: 'top'
-              });
-              toast.present()
-          }).catch(function(error) {
-              // An error happened.
-              this.showError(error.message);
-          });
+      pushPage(){
+          if (this.navParams.data[0] === false){
+              this.navCtrl.push(OrderSubmitPage, [
+                  this.navParams.data[1],
+                  this.navParams.data[2],
+              ])
+          }
+          else{
+              this.navCtrl.push(MenuPage);
+          }
       }
 }
 
