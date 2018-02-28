@@ -30,7 +30,7 @@
         <ion-list>
 
             <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
-                <ion-icon md="md-remove-circle" id='{{item.id}}' (click)="delete(i)">
+                <ion-icon md="md-remove-circle" id={{item.id}} (click)="delete(i)">
 
                 </ion-icon>
                 {{item}}
@@ -39,7 +39,10 @@
         </ion-list>
 
     </ion-card>
-    <button ion-button color="mtech-red" (click)="submitOrder()">
-        <p class="alignRight">Send</p>
-    </button>
+
+    <div class="sendButtonContainer">
+        <button class="send-button" ion-button color="mtech-red" (click)="submitOrder()">
+           send
+        </button>
+    </div>
 </ion-content>

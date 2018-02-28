@@ -99,7 +99,7 @@ export class LoginPage{
         this.registering = bool;
       }
 
-        displayResults(result){
+        displayResults(result) {
             if (result){
                 console.log("Signed in!!!");
                 console.log(this.user.name);

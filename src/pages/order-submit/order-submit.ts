@@ -19,39 +19,7 @@ import { HomePage } from "../home/home";
 @Component({
   selector: "page-order-submit",
   templateUrl: "order-submit.html",
-  styles: [
-    `
-        ion-content {
-            background-color: white;
-        }
-
-        ion-card {
-            margin: auto;
-            max-width: 400px;
-
-        }
-
-        ion-card-content {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hover-delete {
-            visibility: hidden;
-        }
-
-        .menu-item:hover .hover-delete {
-            visibility: visible;
-        }
-
-        
-
-
-
-    `
-  ]
+  styleUrls: ['/src/pages/order-submit/order-submit.css']
 })
 export class OrderSubmitPage {
   orderInformation;
