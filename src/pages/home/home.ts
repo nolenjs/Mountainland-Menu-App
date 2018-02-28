@@ -10,25 +10,11 @@ import {LoginPage} from '../login/login';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  styles: [`
-    ion-content{
-
-      background-color: white;
-    }
-    .menuButtonBox{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      cursor: pointer;
-      
-    }
-    
-  `]
+  styles: []
 })
 export class HomePage{
   //Login or logout button?
-  login: boolean;
+  login: boolean = true;
 
   constructor(public navCtrl: NavController, private toastCtrl: ToastController){
       console.log("ngOnInit");

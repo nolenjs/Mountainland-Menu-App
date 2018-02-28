@@ -1,3 +1,13 @@
+
 ion-content{
-  background-color: crimson;
+
+  background-color: white;
+}
+.menuButtonBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  
 }
