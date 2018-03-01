@@ -16,9 +16,9 @@
       <ion-card style="margin: auto;">
         <img alt='Mountainland Grill Logo' src="../../assets/imgs/grillLogo.png">
       </ion-card>
-        <div class="menuButtonBox" style="margin: auto 271px;">
-          <button *ngIf="login===true" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
-          <button *ngIf="login===false" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
+        <div class="menuButtonBox">
+          <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
+          <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
           <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
         </div>
     <div>

@@ -19,7 +19,7 @@ import { HomePage } from "../home/home";
 @Component({
   selector: "page-order-submit",
   templateUrl: "order-submit.html",
-  styleUrls: ['/src/pages/order-submit/order-submit.css']
+  styleUrls: ['/src/pages/order-submit/order-submit.scss']
 })
 export class OrderSubmitPage {
   orderInformation;
@@ -33,6 +33,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
+    console.log(this.orderInformation);
     this.name = this.navParams.data[1];
   }
 
