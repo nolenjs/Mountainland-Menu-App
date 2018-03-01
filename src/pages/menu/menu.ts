@@ -207,7 +207,8 @@ export class MenuPage {
 
   ordersubmitted(){
       firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
+          console.log(user);
+          if (user || user !== null) {
               // User is signed in.
               console.log(user.displayName);
               this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, user.displayName])
@@ -220,7 +221,7 @@ export class MenuPage {
               });
               alert.present();
               //False means that user isn't logged in yet
-              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}, user.displayName])
+              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
           }
 
       });

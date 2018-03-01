@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase/app';
@@ -27,13 +27,19 @@ import {LoginPage} from '../login/login';
   `]
 })
 export class HomePage{
-  //Login or logout button?
-  login: boolean;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController){
-      console.log("ngOnInit");
+  loggedIn: boolean = false;
+  //logButtonTxt: string;
+
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController){}
+
+  ionViewDidLoad(){
+      console.log("ionViewDidLoad");
       firebase.auth().onAuthStateChanged((user) => {
-          user ? this.login = false : this.login = true;
+          console.log('user', user);
+          this.loggedIn = !!user;
+          console.log("New ");
+          // this.logButtonTxt = this.loggedIn ? "LOGOUT" : "LOGIN OR SIGN UP";
 
       });
   }

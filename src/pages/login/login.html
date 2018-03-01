@@ -32,10 +32,13 @@
         <ion-input type='password' [(ngModel)]='confirm'></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button *ngIf="registering===false" color='light' (click)="login(false)">Google Login</button>
-    <button *ngIf="registering === false" ion-button (click)="login(true)">Login</button>
-    <button *ngIf="registering === false" ion-button color="light" (click)="changeShow(true)">Register</button>
-    <button *ngIf="registering === true" ion-button (click)="register()">Register</button>
-    <button *ngIf="registering === true" ion-button color="light" (click)="changeShow(false)">Login</button>
+    <ion-list *ngIf="loggedIn">
+      <button ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
+    </ion-list>
+    <button ion-button *ngIf="!registering" color='light' (click)="login(false)">GOOGLE LOGIN</button>
+    <button *ngIf="!registering" ion-button (click)="login(true)">LOGIN</button>
+    <button *ngIf="!registering" ion-button color="light" (click)="changeShow(true)">SIGN UP</button>
+    <button *ngIf="registering" ion-button (click)="register()">REGISTER</button>
+    <button *ngIf="registering" ion-button color="light" (click)="changeShow(false)">LOGIN</button>
   </ion-card>
 
