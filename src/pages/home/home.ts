@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase/app';
@@ -18,7 +18,7 @@ export class HomePage{
   loggedIn: boolean = false;
   //logButtonTxt: string;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController){}
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private changeDetectorRef: ChangeDetectorRef){}
 
   ionViewDidLoad(){
       console.log("ionViewDidLoad");
@@ -26,6 +26,7 @@ export class HomePage{
           console.log('user', user);
           this.loggedIn = !!user;
           console.log("New ");
+          this.changeDetectorRef.detectChanges();
           // this.logButtonTxt = this.loggedIn ? "LOGOUT" : "LOGIN OR SIGN UP";
 
       });
