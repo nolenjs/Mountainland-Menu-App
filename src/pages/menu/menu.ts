@@ -221,8 +221,8 @@ export class MenuPage {
                   buttons: ['OK']
               });
               alert.present();
-              //False means that user isn't logged in yet
-              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}, ])
+
+              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
           }
 
       });

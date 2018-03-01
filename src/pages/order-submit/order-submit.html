@@ -23,9 +23,10 @@
         </ion-card-header>
 
         <ion-list>
-            <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
 
+            <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
                 <ion-icon md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
+
 
 
                 </ion-icon>
