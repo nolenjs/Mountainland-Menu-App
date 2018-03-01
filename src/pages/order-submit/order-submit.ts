@@ -19,7 +19,7 @@ import { HomePage } from "../home/home";
 @Component({
   selector: "page-order-submit",
   templateUrl: "order-submit.html",
-  styleUrls: ['/src/pages/order-submit/order-submit.css']
+  styleUrls: ['/src/pages/order-submit/order-submit.scss']
 })
 export class OrderSubmitPage {
   orderInformation;
