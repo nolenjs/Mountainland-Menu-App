@@ -166,7 +166,7 @@ export class MenuPage {
   }
 
 
-  order(itemName, item){
+  order(itemName, item) {
 
     this.orderItems.push(item);
 
@@ -189,8 +189,10 @@ export class MenuPage {
     }
 
     else {
+      if(this.foodOptions){
         this.orderItems.push(this.foodOptions);
         this.foodOptions = '';
+      }
     }
 
     let toast = this.toastCtrl.create({
