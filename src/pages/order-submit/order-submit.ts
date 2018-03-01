@@ -33,6 +33,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
+    console.log(this.orderInformation);
     this.name = this.navParams.data[1];
   }
 
