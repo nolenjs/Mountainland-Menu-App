@@ -57,6 +57,10 @@ export class OrderSubmitPage {
     this.orderInformation.items.splice(index, 1);
   }
 
+  totalPrice() {
+    
+  }
+
   ionViewDidLoad() {
     console.log("ionViewDidLoad OrderSubmitPage");
 
