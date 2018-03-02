@@ -4,7 +4,6 @@
         <ion-title>Confirm Order
 
 
-
             <button ion-buttons class="home-button" (click)="home()" end>
                 <ion-icon class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
             </button>
@@ -25,7 +24,9 @@
         <ion-list>
 
             <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
+
                 <ion-icon ios="ios-remove-circle" md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
+
 
                  
 
