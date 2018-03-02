@@ -25,14 +25,18 @@
 
             <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
 
-                <ion-icon md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
+                <ion-icon ios="ios-remove-circle" md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
 
+
+                 
 
                 </ion-icon>
                 {{item}}
 
             </ion-item>
         </ion-list>
+
+        <div class="total"><b>Order Total:[]</b>    </div>
 
     </ion-card>
 
