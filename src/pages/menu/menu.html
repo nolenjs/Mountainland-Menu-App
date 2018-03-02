@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar color="mtech-red">
     <ion-title>MENU <ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon></ion-title>
   </ion-navbar>
@@ -11,9 +10,9 @@
   <!--Breakfast-->
   <div *ngIf="breakfastTime">
 
-    <h2>Breakfast</h2>
+    <h2 class="title">Breakfast</h2>
 
-    <ion-card *ngIf="itsWednesday">
+    <ion-card class="ionCard" *ngIf="itsWednesday">
 
         <div class="menuTitleBox">
           <ion-card-title>Waffle</ion-card-title>
@@ -34,7 +33,7 @@
 
     </ion-card>
 
-      <ion-card *ngIf="itsFriday">
+      <ion-card class="ionCard" *ngIf="itsFriday">
 
           <div class="menuTitleBox">
               <ion-card-title>Biscuits And Gravy</ion-card-title>
@@ -49,7 +48,7 @@
 
       </ion-card>
 
-    <ion-card>
+    <ion-card class="ionCard">
 
       <div class="menuTitleBox">
         <ion-card-title>Breakfast Sandwich</ion-card-title>
@@ -175,7 +174,7 @@
 
 
     </ion-card>
-    <ion-card>
+    <ion-card class="ionCard">
 
       <div class="menuTitleBox">
         <ion-card-title>Omelet</ion-card-title>
@@ -209,7 +208,7 @@
 
     </ion-card>
 
-    <ion-card *ngFor="let food of breakfastInfo">
+    <ion-card class="ionCard" *ngFor="let food of breakfastInfo">
 
       <div class="menuTitleBox">
         <ion-card-title>{{food.itemName}}</ion-card-title>
@@ -240,15 +239,15 @@
 
     </ion-card>
 
-    <button ion-button col="mtech-red" icon-end="md-restaurant" class="submit-button" (click)="ordersubmitted();"><p class="alignright">Submit Order</p></button>
+    <button ion-button color="mtech-red" icon-end="md-restaurant" class="submit-button" (click)="ordersubmitted();"><p class="alignright">Submit Order</p></button>
   </div>
 
   <!--Lunch & Dinner-->
   <div *ngIf="lunchTime">
 
-    <h2>Lunch And Dinner</h2>
+    <h2 class="title">Lunch And Dinner</h2>
 
-    <ion-card *ngFor="let food of lunchInfo">
+    <ion-card class="ionCard" *ngFor="let food of lunchInfo">
 
       <div class="menuTitleBox">
         <ion-card-title>{{food.itemName}}</ion-card-title>
@@ -281,7 +280,7 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <ion-card class="ionCard">
 
       <div class="menuTitleBox">
         <ion-card-title>Sides</ion-card-title>

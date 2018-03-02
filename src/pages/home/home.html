@@ -13,22 +13,20 @@
 
   <ion-content>
 
-      <ion-card style="margin: auto;">
-        <img alt='Mountainland Grill Logo' src="../../assets/imgs/grillLogo.png">
-      </ion-card>
-        <div class="menuButtonBox">
-          <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
-          <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
-          <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
-        </div>
-    <div>
-      <ion-card style="margin: auto;">
-        <img src="../../assets/imgs/24COOKING-CLASSICPANCAKES-videoSixteenByNineJumbo1600.jpg" alt="image">
+      <div id="homeLogo">
+        <img  alt='Mountainland Grill Logo' src="../../assets/imgs/grillLogo.png">
+          <div class="menuButtonBox">
+              <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
+              <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
+              <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
+          </div>
+      </div>
 
-      </ion-card>
-      <ion-card style="margin: auto;">
+
+
+    <div id="imageContainer">
+        <img src="../../assets/imgs/24COOKING-CLASSICPANCAKES-videoSixteenByNineJumbo1600.jpg" alt="image">
         <img src="../../assets/imgs/the%20Chimi-Jimmy.jpg" alt="image">
-      </ion-card>
     </div>
 
 
