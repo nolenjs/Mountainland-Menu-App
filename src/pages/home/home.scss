@@ -33,6 +33,10 @@ ion-card{
   margin: 10px auto;
   width: 60%;
 }
+ion-content{
+  background: url("https://goo.gl/YAxgB9") no-repeat;
+  background-size: cover;
+}
 @media only screen and (max-width: 650px) {
   html {
     body{
