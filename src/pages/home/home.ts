@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase/app';
@@ -16,7 +16,7 @@ export class HomePage{
   //Login or logout button?
 
   loggedIn: boolean = false;
-  //logButtonTxt: string;
+  logButtonTxt: string;
 
   constructor(public navCtrl: NavController, private toastCtrl: ToastController){}
 
@@ -26,8 +26,7 @@ export class HomePage{
           console.log('user', user);
           this.loggedIn = !!user;
           console.log("New ");
-          // this.logButtonTxt = this.loggedIn ? "LOGOUT" : "LOGIN OR SIGN UP";
-
+          this.logButtonTxt = this.loggedIn ? "VIEW OUR MENU OR LOGOUT" : "LOGIN OR GO TO OUR MENU";
       });
   }
 
@@ -39,7 +38,7 @@ export class HomePage{
               duration: 1800,
               position: 'top'
           });
-          toast.present()
+          toast.present();
       }).catch((error) => {
           // An error happened.
           console.error(error);
