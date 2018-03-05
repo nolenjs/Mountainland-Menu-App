@@ -51,7 +51,7 @@ export class MenuPage {
 
   orderPrice = [];
   orderItems = [];
-  orderOptions = [];x
+  orderOptions = [];
   date = new Date();
 
     omeletToppings = [
@@ -167,9 +167,11 @@ export class MenuPage {
   }
 
 
-  order(itemName, item) {
+  order(itemName, item, price) {
 
     this.orderItems.push(item);
+
+    this.orderPrice.push(price);
 
     if(itemName === 'Breakfast Sandwich'){
         this.orderOptions.push(`${this.breadType}, ${this.numberOfEggs}, ${this.styleOfEggs}, ${this.meat}, ${this.cheese}`);
@@ -206,6 +208,8 @@ export class MenuPage {
     console.log(this.orderItems);
     console.log('options');
     console.log(this.orderOptions);
+    console.log('price');
+    console.log(this.orderPrice);
 
     toast.present();
   }
@@ -216,7 +220,7 @@ export class MenuPage {
           if (user || user !== null) {
               // User is signed in.
               console.log(user.displayName);
-              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions ,user.displayName])
+              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
           } else {
               // User is signed out.
               let alert = this.alertCtrl.create({
