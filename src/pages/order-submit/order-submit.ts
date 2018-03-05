@@ -38,7 +38,7 @@ export class OrderSubmitPage {
   }
 
   home() {
-    this.navCtrl.push(HomePage, this.navParams[1]);
+    this.navCtrl.setRoot(HomePage, this.navParams[1]);
   }
 
   confirm() {
