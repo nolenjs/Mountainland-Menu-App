@@ -1,27 +1,9 @@
-ion-card {
-  .menuTitleBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    ion-card-title {
-      margin-right: 5px;
-    }
+page-menu {
+  h2{
+    margin: auto;
+    background-color: #fff;
+    width: 50%;
   }
-  .ionCardTitle {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    ion-toggle {
-      margin-left: 10px;
-    }
-  }
-
-  .breakfast {
-    width: 100%;
-  }
-  page-menu {
     ion-content {
       .title {
         text-align: center;
@@ -29,6 +11,9 @@ ion-card {
       .ionCard {
         width: 50%;
         margin: auto;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0%;
       }
       .menuTitleBox {
         display: flex;
@@ -76,15 +61,25 @@ ion-card {
       font-size: 17px;
     }
   }
-
-  @media only screen and (max-width: 726px) {
-    page-menu {
-      ion-content {
-        .title {
-          text-align: left;
-        }
-        .ionCard {
-          width: calc(100% - 20px);
+@media only screen and (max-width: 726px) {
+  page-menu{
+    h2{
+      margin: auto;
+      background-color: #fff;
+      width: calc(100% - 20px);
+    }
+    ion-content{
+      .title{
+        text-align: left;
+      }
+      .ionCard{
+        width: calc(100% - 20px);
+        margin: auto;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0%;
+        .itemImage{
+          width: 50%;
           margin: auto;
           .itemImage {
             width: 50%;
@@ -103,4 +98,3 @@ ion-card {
     z-index: -1;
   }
 }
-
