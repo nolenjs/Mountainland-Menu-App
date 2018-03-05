@@ -26,6 +26,7 @@ export class HomePage{
           console.log('user', user);
           this.loggedIn = !!user;
           console.log("New ");
+          this.logButtonTxt = this.loggedIn ? "VIEW OUR MENU OR LOGOUT" : "LOGIN OR GO TO OUR MENU";
           this.changeDetectorRef.detectChanges();
           // this.logButtonTxt = this.loggedIn ? "LOGOUT" : "LOGIN OR SIGN UP";
 

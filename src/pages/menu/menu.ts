@@ -220,9 +220,8 @@ export class MenuPage{
           if (user || user !== null) {
               // User is signed in.
               console.log(user.displayName);
-              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
-          } else {
-
+              this.navCtrl.setRoot(OrderSubmitPage, [{items: this.orderItems}, user.displayName])
+          } else if (user === null){
               // User is signed out.
               let alert = this.alertCtrl.create({
                   title: 'Before You Submit...',
