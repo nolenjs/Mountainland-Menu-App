@@ -3,9 +3,7 @@
     <ion-navbar color="mtech-red">
         <ion-title>Confirm Order
 
-
-
-                <ion-icon (click)="home()" class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
+            <ion-icon (click)="home()" class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
 
         </ion-title>
     </ion-navbar>
@@ -27,17 +25,16 @@
 
                 <ion-icon ios="ios-remove-circle" md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
 
-
-                 
-
                 </ion-icon>
                 {{item}}
-
+                <div>{{price | currency}}</div>
             </ion-item>
         </ion-list>
 
-        <div class="total"><b>Order Total:[]</b>    </div>
-
+        <div class="total"> <b>Order Total:
+        <p *ngFor="let price of orderPrice"></p></b> 
+        <p><b>{{total | currency}}</b></p>
+    </div>
 
     </ion-card>
 
@@ -47,3 +44,4 @@
         </button>
     </div>
 </ion-content>
+<div class="blur"></div>

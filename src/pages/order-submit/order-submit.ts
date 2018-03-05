@@ -23,8 +23,11 @@ import { HomePage } from "../home/home";
 })
 export class OrderSubmitPage {
   orderInformation;
-
+  orderPrice=[];
   name;
+  total: number = 0;
+
+ 
 
   constructor(
     public navCtrl: NavController,
@@ -34,12 +37,15 @@ export class OrderSubmitPage {
   ) {
     this.orderInformation = this.navParams.data[0];
     console.log(this.orderInformation);
-    this.name = this.navParams.data[1];
+    this.name = this.navParams.data[3];
+    this.orderPrice = this.navParams.data[2];
   }
 
   home() {
-    this.navCtrl.push(HomePage, this.navParams[1]);
+    this.navCtrl.setRoot(HomePage, this.navParams[1]);
   }
+
+  
 
   confirm() {
     // this.confirmOrder.push();
@@ -58,21 +64,33 @@ export class OrderSubmitPage {
   }
 
   totalPrice() {
-    
+    for(let i=0; i<this.orderPrice.length; i++){
+      console.log("Price: " + this.orderPrice[i]);
+      this.total += this.orderPrice[i];
+      console.log("Subtotal:" + this.total)
+    }
+    console.log("Total: " + this.total);
+    // this.orderPrice
+  
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad OrderSubmitPage");
+    this.totalPrice();
 
-    console.log(this.orderInformation);
+    // console.log(this.orderInformation);
     console.log("Name: " + this.name);
+    console.log("orderPrice");
+    console.log(this.orderPrice);
+  
   }
 
   submitOrder() {
     console.log("pushing order");
 
     let itemsRef = this.db.list("orderInfo");
-    itemsRef.push({ order: this.orderInformation, /*name: this.name*/ });
+    
+    itemsRef.push({ order: this.orderInformation, name: this.name });
 
     let toast = this.toastCtrl.create({
       message: `Order Sent`,
