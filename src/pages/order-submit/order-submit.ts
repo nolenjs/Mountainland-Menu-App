@@ -36,7 +36,7 @@ export class OrderSubmitPage {
   ) {
     this.orderInformation = this.navParams.data[0];
     console.log(this.orderInformation);
-    this.name = this.navParams.data[1];
+    this.name = this.navParams.data[3];
     this.orderPrice = this.navParams.data[2];
   }
 
@@ -65,13 +65,14 @@ export class OrderSubmitPage {
 
     // console.log(this.orderInformation);
     console.log("Name: " + this.name);
-    console.log(this.orderPrice);
+    console.log(this.orderInformation);
   }
 
   submitOrder() {
     console.log("pushing order");
 
     let itemsRef = this.db.list("orderInfo");
+    
     itemsRef.push({ order: this.orderInformation, name: this.name });
 
     let toast = this.toastCtrl.create({
