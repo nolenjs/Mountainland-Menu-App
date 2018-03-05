@@ -41,7 +41,7 @@ export class OrderSubmitPage {
   }
 
   home() {
-    this.navCtrl.push(HomePage, this.navParams[1]);
+    this.navCtrl.setRoot(HomePage, this.navParams[1]);
   }
 
   confirm() {
@@ -72,7 +72,8 @@ export class OrderSubmitPage {
     console.log("pushing order");
 
     let itemsRef = this.db.list("orderInfo");
-    itemsRef.push({ order: this.orderInformation, name: this.name});
+    
+    itemsRef.push({ order: this.orderInformation, name: this.name });
 
     let toast = this.toastCtrl.create({
       message: `Order Sent`,

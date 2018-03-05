@@ -13,8 +13,8 @@ import * as firebase from 'firebase/app';
  */
 
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+    selector: 'page-menu',
+    templateUrl: 'menu.html',
 })
 export class MenuPage {
 
@@ -222,6 +222,7 @@ export class MenuPage {
               console.log(user.displayName);
               this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
           } else {
+
               // User is signed out.
               let alert = this.alertCtrl.create({
                   title: 'Before You Submit...',
