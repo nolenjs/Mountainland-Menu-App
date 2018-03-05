@@ -51,6 +51,7 @@ export class MenuPage {
 
   orderPrice = [];
   orderItems = [];
+  orderOptions = [];
   date = new Date();
 
     omeletToppings = [
@@ -166,12 +167,14 @@ export class MenuPage {
   }
 
 
-  order(itemName, item) {
+  order(itemName, item, price) {
 
     this.orderItems.push(item);
 
+    this.orderPrice.push(price);
+
     if(itemName === 'Breakfast Sandwich'){
-        this.orderItems.push(`${this.breadType}, ${this.numberOfEggs}, ${this.styleOfEggs}, ${this.meat}, ${this.cheese}`);
+        this.orderOptions.push(`${this.breadType}, ${this.numberOfEggs}, ${this.styleOfEggs}, ${this.meat}, ${this.cheese}`);
 
         this.breadType = '' ;
         this.numberOfEggs = '';
@@ -183,14 +186,14 @@ export class MenuPage {
     else if(itemName === 'Omelet'){
         for(let i = 0; i< this.omeletToppings.length; i++){
             if(this.omeletToppings[i].checked === true) {
-                this.orderItems.push(this.omeletToppings[i].name);
+                this.orderOptions.push(this.omeletToppings[i].name);
             }
         }
     }
 
     else {
       if(this.foodOptions){
-        this.orderItems.push(this.foodOptions);
+        this.orderOptions.push(this.foodOptions);
         this.foodOptions = '';
       }
     }
@@ -201,7 +204,12 @@ export class MenuPage {
       position: 'top'
     });
 
+      console.log('items');
     console.log(this.orderItems);
+    console.log('options');
+    console.log(this.orderOptions);
+    console.log('price');
+    console.log(this.orderPrice);
 
     toast.present();
   }
@@ -212,8 +220,9 @@ export class MenuPage {
           if (user || user !== null) {
               // User is signed in.
               console.log(user.displayName);
-              this.navCtrl.setRoot(OrderSubmitPage, [{items: this.orderItems}, user.displayName])
-          } else{
+              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
+          } else {
+
               // User is signed out.
               let alert = this.alertCtrl.create({
                   title: 'Before You Submit...',

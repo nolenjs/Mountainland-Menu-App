@@ -26,6 +26,8 @@ export class OrderSubmitPage {
 
   name;
 
+  orderPrice;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -35,6 +37,7 @@ export class OrderSubmitPage {
     this.orderInformation = this.navParams.data[0];
     console.log(this.orderInformation);
     this.name = this.navParams.data[1];
+    this.orderPrice = this.navParams.data[2];
   }
 
   home() {
@@ -60,8 +63,9 @@ export class OrderSubmitPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad OrderSubmitPage");
 
-    console.log(this.orderInformation);
+    // console.log(this.orderInformation);
     console.log("Name: " + this.name);
+    console.log(this.orderPrice);
   }
 
   submitOrder() {

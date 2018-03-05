@@ -2,6 +2,14 @@ ion-img{
   height: 50px;
   width: auto;
 }
+.toolbar-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.toolbar-title > ion-icon{
+  margin-left: 5px;
+}
 
 .blur{
   height: 100%;

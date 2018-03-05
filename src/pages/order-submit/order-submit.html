@@ -3,10 +3,8 @@
     <ion-navbar color="mtech-red">
         <ion-title>Confirm Order
 
+            <ion-icon (click)="home()" class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
 
-            <button ion-buttons class="home-button" (click)="home()" end>
-                <ion-icon class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
-            </button>
         </ion-title>
     </ion-navbar>
 
@@ -25,14 +23,17 @@
 
             <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
 
-                <ion-icon md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
-
+                <ion-icon ios="ios-remove-circle" md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
 
                 </ion-icon>
                 {{item}}
 
             </ion-item>
         </ion-list>
+
+        <div class="total"> <b>Order Total:[]</b> </div>
+
+        <p *ngFor="let price of orderPrice">{{price | currency}}</p>
 
     </ion-card>
 

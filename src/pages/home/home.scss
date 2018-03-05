@@ -1,3 +1,8 @@
+.toolbar-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .blur{
   height: 100%;
@@ -24,9 +29,43 @@
     align-items: center;
     cursor: pointer;
 }
+
 h1{
   margin: 5px;
   padding: 5px;
   font-family: sans-serif Myriad Apple;
+}
+#imageContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#imageContainer > img{
+  width: 20%;
+  margin: auto 20px;
+}
+#homeLogo{
+  margin: 10px auto;
+  width: 60%;
+}
+ion-content{
+  background: url("https://goo.gl/YAxgB9") no-repeat;
+  background-size: cover;
+}
+@media only screen and (max-width: 650px) {
+  html {
+    body{
+      #homeLogo{
+        margin: 10px auto;
+        width: 100%;
+      }
+    }
+    #imageContainer > img{
+      width: 50%;
+      margin: auto 20px;
+    }
+  }
+
 }
 

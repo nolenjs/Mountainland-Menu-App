@@ -1,3 +1,4 @@
+
 h2{
   margin: 0 6px;
   background-color: whitesmoke;
@@ -25,24 +26,77 @@ ion-card{
   .breakfast{
     width: 100%;
   }
-}
+page-menu {
+    ion-content {
+      .title{
+        text-align: center;
+      }
+      .ionCard{
+        width: 50%;
+        margin: auto;
+      }
+      .menuTitleBox {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        ion-card-title {
+          margin-right: 5px;
+        }
+      }
+      .ionCardTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        ion-toggle {
+          margin-left: 10px;
+        }
+      }
+
+      .breakfast {
+        width: 100%;
+      }
+      .itemImage {
+        width: 30%;
+        margin: auto;
+      }
+    }
+  }
 .submit-button{
-  float:right
+  float: right;
+  position: fixed;
+  bottom: -4px;
+  right: 13px;
 }
-.sidesOrder{
+.sidesOrder {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  button{
+  button {
     height: 15px;
   }
-  ion-label{
+  ion-label {
     font-size: 17px;
   }
-  .itemImage{
-    width: 50%;
-    margin: auto;
+}
+
+@media only screen and (max-width: 726px) {
+  page-menu{
+    ion-content{
+      .title{
+        text-align: left;
+      }
+      .ionCard{
+        width: calc(100% - 20px);
+        margin: auto;
+        .itemImage{
+          width: 50%;
+          margin: auto;
+        }
+      }
+    }
   }
 }
 .blur{
