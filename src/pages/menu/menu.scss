@@ -36,7 +36,10 @@ page-menu {
     }
   }
 .submit-button{
-  float:right
+  float: right;
+  position: fixed;
+  bottom: -4px;
+  right: 13px;
 }
 .sidesOrder {
   display: flex;
