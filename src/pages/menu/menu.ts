@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {AlertController, NavController, ToastController} from 'ionic-angular';
+import { Component, OnDestroy } from '@angular/core';
+import {AlertController, NavController, ToastController } from 'ionic-angular';
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {LoginPage} from "../login/login";
@@ -13,10 +13,10 @@ import * as firebase from 'firebase/app';
  */
 
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+    selector: 'page-menu',
+    templateUrl: 'menu.html',
 })
-export class MenuPage {
+export class MenuPage{
 
   private breakfastOpenTime: number = 8;
   private breakfastCloseTime: number = 10;
@@ -222,6 +222,7 @@ export class MenuPage {
               console.log(user.displayName);
               this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
           } else {
+
               // User is signed out.
               let alert = this.alertCtrl.create({
                   title: 'Before You Submit...',

@@ -4,20 +4,49 @@
   align-items: center;
 }
 
-ion-content{
-
-  background-color: white;
+.blur{
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/imgs/home-background.png");
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
 }
+
+
 .menuButtonBox{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 10px;
 
 }
-ion-card{
-  margin: auto;
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+h1{
+  margin: 5px;
+  padding: 5px;
+  font-family: sans-serif Myriad Apple;
+}
+#homeLogoContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#imageContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 #imageContainer{
   display: flex;

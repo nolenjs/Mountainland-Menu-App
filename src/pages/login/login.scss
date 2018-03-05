@@ -11,3 +11,12 @@ ion-img{
   margin-left: 5px;
 }
 
+.blur{
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/imgs/home-background.png");
+  background-size: cover;
+  filter: blur(10px);
+  z-index: -1;
+}
+

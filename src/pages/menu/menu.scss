@@ -1,11 +1,19 @@
 page-menu {
+  h2{
+    margin: auto;
+    background-color: #fff;
+    width: 50%;
+  }
     ion-content {
-      .title{
+      .title {
         text-align: center;
       }
-      .ionCard{
+      .ionCard {
         width: 50%;
         margin: auto;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0%;
       }
       .menuTitleBox {
         display: flex;
@@ -35,24 +43,31 @@ page-menu {
       }
     }
   }
-.submit-button{
-  float:right
-}
-.sidesOrder {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  button {
-    height: 15px;
+  .submit-button {
+    float: right;
+    position: fixed;
+    bottom: -4px;
+    right: 13px;
   }
-  ion-label {
-    font-size: 17px;
+  .sidesOrder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    button {
+      height: 15px;
+    }
+    ion-label {
+      font-size: 17px;
+    }
   }
-}
-
 @media only screen and (max-width: 726px) {
   page-menu{
+    h2{
+      margin: auto;
+      background-color: #fff;
+      width: calc(100% - 20px);
+    }
     ion-content{
       .title{
         text-align: left;
@@ -60,11 +75,26 @@ page-menu {
       .ionCard{
         width: calc(100% - 20px);
         margin: auto;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0%;
         .itemImage{
           width: 50%;
           margin: auto;
+          .itemImage {
+            width: 50%;
+            margin: auto;
+          }
         }
       }
     }
+  }
+  .blur {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/imgs/home-background.png");
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -1;
   }
 }

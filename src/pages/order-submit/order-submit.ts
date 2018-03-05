@@ -29,6 +29,8 @@ export class OrderSubmitPage {
 
  
 
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -83,6 +85,7 @@ export class OrderSubmitPage {
     console.log("orderPrice");
     console.log(this.orderPrice);
   
+    console.log(this.orderInformation);
   }
 
   submitOrder() {

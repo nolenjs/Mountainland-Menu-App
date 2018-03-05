@@ -6,6 +6,7 @@ import 'firebase/auth';
 import {User} from "../../interfaces/IUser";
 import {MenuPage} from "../menu/menu";
 import {OrderSubmitPage} from "../order-submit/order-submit";
+import {HomePage} from "../home/home";
 
 
 @Component ({
@@ -135,12 +136,13 @@ export class LoginPage{
 
       pushPage(){
           if (this.navParams.data[0] === false){
-              this.navCtrl.push(OrderSubmitPage, [
+              this.navCtrl.setRoot(OrderSubmitPage, [
                   this.navParams.data[1],
                   this.navParams.data[2],
               ])
           }
           else{
+              this.navCtrl.setRoot(HomePage);
               this.navCtrl.push(MenuPage);
           }
       }
