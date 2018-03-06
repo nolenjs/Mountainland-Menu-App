@@ -4,6 +4,7 @@ import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {LoginPage} from "../login/login";
 import * as firebase from 'firebase/app';
+import { ISubscription } from "rxjs/Subscription";
 
 /**
  * Generated class for the MenuPage page.
@@ -16,7 +17,7 @@ import * as firebase from 'firebase/app';
     selector: 'page-menu',
     templateUrl: 'menu.html',
 })
-export class MenuPage{
+export class MenuPage implements OnDestroy{
 
   private breakfastOpenTime: number = 8;
   private breakfastCloseTime: number = 10;
@@ -39,12 +40,14 @@ export class MenuPage{
 
   private foodOptions;
 
+  private lunchSubscription;//Temperary?
+    private breakfastSubscription;
   hour = new Date().getHours();
   minutes = new Date().getMinutes();
   day = new Date().getDay();
 
-  breakfastInfo: any;
-  lunchInfo: any;
+  breakfastInfo: ISubscription;
+  lunchInfo: ISubscription;
   breakfastTime: boolean;
   lunchTime: boolean;
 
@@ -151,18 +154,17 @@ export class MenuPage{
   }
 
   getBreakfast() {
-    this.menuProvider.getBreakfastMenuData().subscribe((breakfastMenu: any) => {
-      this.breakfastInfo = breakfastMenu;
+     this.breakfastSubscription = this.menuProvider.getBreakfastMenuData().subscribe((breakfastMenu: any) => {
+         this.breakfastInfo = breakfastMenu;
+         console.log(this.breakfastInfo);
+     });
 
-      console.log(this.breakfastInfo);
-    });
   }
 
   getLunchAndDinner() {
-    this.menuProvider.getLunchMenuData().subscribe((lunchMenu: any) => {
-      this.lunchInfo = lunchMenu;
-
-      console.log(this.lunchInfo);
+    this.lunchSubscription = this.menuProvider.getLunchMenuData().subscribe((lunchMenu: any) => {
+        this.lunchInfo = lunchMenu;
+        console.log(this.lunchInfo);
     });
   }
 
@@ -216,30 +218,38 @@ export class MenuPage{
 
 
   ordersubmitted(){
-      firebase.auth().onAuthStateChanged((user) => {
-          if (user || user !== null) {
-              // User is signed in.
-              console.log(user.displayName);
-              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
-          } else {
+      let user = firebase.auth().currentUser;
+      if (user || user !== null) {
+          // User is signed in.
+          console.log(user.displayName);
+          this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
+      } else {
 
-              // User is signed out.
-              let alert = this.alertCtrl.create({
-                  title: 'Before You Submit...',
-                  subTitle: 'You first need to login or register!!',
-                  buttons: ['OK']
-              });
-              alert.present();
+          // User is signed out.
+          let alert = this.alertCtrl.create({
+              title: 'Before You Submit...',
+              subTitle: 'You first need to login or register!!',
+              buttons: ['OK']
+          });
+          alert.present();
 
-              this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
-          }
-
-      });
+          this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
+      }
   }
 
   omeletItems(items){
       console.log('items: '+ items );
   }
+    ngOnDestroy() {
+      if (this.breakfastSubscription !== undefined){
+          this.breakfastSubscription.unsubscribe();
+          console.log("Breakfast: unsubscribed");
+      }
+      if (this.lunchSubscription !== undefined){
+          this.lunchSubscription.unsubscribe();
+          console.log("Lunch: unsubscribed");
+      }
+    }
 
 }
 

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase/app';
@@ -12,16 +12,17 @@ import {LoginPage} from '../login/login';
   templateUrl: 'home.html',
   styles: []
 })
-export class HomePage{
+export class HomePage implements OnDestroy{
   //Login or logout button?
 
-  loggedIn: boolean = false;
+  loggedIn: boolean;
   logButtonTxt: string;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController){}
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private cdr: ChangeDetectorRef){}
 
   ionViewDidLoad(){
       console.log("ionViewDidLoad");
+      this.cdr.detectChanges();
       firebase.auth().onAuthStateChanged((user) => {
           console.log('user', user);
           this.loggedIn = !!user;
@@ -56,6 +57,10 @@ export class HomePage{
 
   gotToLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  ngOnDestroy(){
+      this.cdr.detach();
   }
 }
 

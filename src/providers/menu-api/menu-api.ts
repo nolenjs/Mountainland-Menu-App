@@ -20,8 +20,7 @@ export class MenuApiProvider {
 
   getBreakfastMenuData(): Observable<any>{
     return this.http.get(`${this.url}/breakfast.json`)
-      .pipe(
-      map((response: Response) => {
+      .pipe(map((response: Response) => {
         return response;
       }));
   }
