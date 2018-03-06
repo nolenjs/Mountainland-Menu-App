@@ -1,48 +1,72 @@
-h2{
-  margin: 0 6px;
-  background-color: whitesmoke;
-}
-ion-card{
-  .menuTitleBox{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    ion-card-title{
-      margin-right: 5px;
-    }
+page-menu {
+  h2{
+    margin: auto;
+    background-color: #fff;
+    width: 50%;
   }
-  .ionCardTitle{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    ion-toggle{
-      margin-left: 10px;
+  ion-content {
+    .title {
+      text-align: center;
     }
-  }
+    .ionCard {
+      width: 50%;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-radius: 0%;
+      margin: auto auto 10px auto;
+      ion-card-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .menuTitleBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      ion-card-title {
+        margin-right: 5px;
+      }
+    }
+    .ionCardTitle {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      ion-toggle {
+        margin-left: 10px;
+      }
+    }
 
-  .breakfast{
-    width: 100%;
-  }
-  .submit-button {
-    float: right;
-    position: fixed;
-    bottom: -4px;
-    right: 13px;
-  }
-  .sidesOrder {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    button {
-      height: 15px;
+    .breakfast {
+      width: 100%;
     }
-    ion-label {
-      font-size: 17px;
+    .itemImage {
+      width: 30%;
+      margin: auto;
     }
   }
+}
+.submit-button {
+  float: right;
+  position: fixed;
+  bottom: -4px;
+  right: 13px;
+}
+.sidesOrder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  button {
+    height: 15px;
+  }
+  ion-label {
+    font-size: 17px;
+  }
+}
 @media only screen and (max-width: 726px) {
   page-menu{
     h2{
@@ -79,13 +103,4 @@ ion-card{
     filter: blur(5px);
     z-index: -1;
   }
-}
-.blur{
-  height: 100%;
-  width: 100%;
-  background-image: url("../../assets/imgs/home-background.png");
-  background-size: cover;
-  filter: blur(5px);
-  z-index: -1;
-}
 }

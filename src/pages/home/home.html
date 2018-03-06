@@ -11,23 +11,20 @@
  
  
   <ion-content>
-    <ion-card style="margin: 5px auto auto">
+    <div id="homeLogoContainer">
         <img alt='Mountainland Grill Logo' src="../../assets/imgs/grillLogo.png">
-      </ion-card>
-      <ion-card>
-        <div class="menuButtonBox">
-          <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
-          <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
-          <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
-        </div>
-      </ion-card>
-      <div>
-        <ion-card style="max-height: 320px; width: auto;">
-          <img src="../../assets/imgs/24COOKING-CLASSICPANCAKES-videoSixteenByNineJumbo1600.jpg" alt="image">
-        </ion-card>
-        <ion-card style="max-height: 210px; width: auto;">
-          <img src="../../assets/imgs/the%20Chimi-Jimmy.jpg" alt="image">
-        </ion-card>
+    </div>
+
+      <div class="menuButtonBox">
+        <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
+        <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
+        <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
       </div>
+
+    <div id="imageContainer">
+      <img class="homeImage" src="https://goo.gl/6Yk11m" alt="image">
+      <img class="homeImage" src="https://goo.gl/uneewp" alt="image">
+    </div>
+
   </ion-content>
   <div class="blur"></div>
