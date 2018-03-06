@@ -1,47 +1,29 @@
-page-menu {
-  h2{
-    margin: auto;
-    background-color: #fff;
-    width: 50%;
-  }
-    ion-content {
-      .title {
-        text-align: center;
-      }
-      .ionCard {
-        width: 50%;
-        margin: auto;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border-radius: 0%;
-      }
-      .menuTitleBox {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        ion-card-title {
-          margin-right: 5px;
-        }
-      }
-      .ionCardTitle {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        ion-toggle {
-          margin-left: 10px;
-        }
-      }
-
-      .breakfast {
-        width: 100%;
-      }
-      .itemImage {
-        width: 30%;
-        margin: auto;
-      }
+h2{
+  margin: 0 6px;
+  background-color: whitesmoke;
+}
+ion-card{
+  .menuTitleBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    ion-card-title{
+      margin-right: 5px;
     }
+  }
+  .ionCardTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    ion-toggle{
+      margin-left: 10px;
+    }
+  }
+
+  .breakfast{
+    width: 100%;
   }
   .submit-button {
     float: right;
@@ -97,4 +79,13 @@ page-menu {
     filter: blur(5px);
     z-index: -1;
   }
+}
+.blur{
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/imgs/home-background.png");
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
+}
 }

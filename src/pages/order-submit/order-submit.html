@@ -3,8 +3,9 @@
     <ion-navbar color="mtech-red">
         <ion-title>Confirm Order
 
+            <div class="home">
             <ion-icon (click)="home()" class="ion-icon" ios="ios-home" md="md-home" text-center></ion-icon>
-
+        </div>
         </ion-title>
     </ion-navbar>
 
@@ -27,13 +28,14 @@
 
                 </ion-icon>
                 {{item}}
-
+                <div>{{price | currency}}</div>
             </ion-item>
         </ion-list>
 
-        <div class="total"> <b>Order Total:[]</b> </div>
-
-        <p *ngFor="let price of orderPrice">{{price | currency}}</p>
+        <div class="total"> <b>Order Total:
+        <p *ngFor="let price of orderPrice"></p></b> 
+        <p><b>{{total | currency}}</b></p>
+    </div>
 
     </ion-card>
 

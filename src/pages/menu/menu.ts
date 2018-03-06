@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
 import {AlertController, NavController, ToastController } from 'ionic-angular';
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
@@ -235,6 +235,7 @@ export class MenuPage implements OnDestroy{
 
           this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
       }
+
   }
 
   omeletItems(items){
