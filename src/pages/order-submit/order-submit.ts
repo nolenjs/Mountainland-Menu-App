@@ -23,10 +23,14 @@ import { HomePage } from "../home/home";
 })
 export class OrderSubmitPage {
   orderInformation;
-
+  orderPrice=[];
   name;
+  total: number = 0;
+  length;
 
-  orderPrice;
+ 
+
+
 
   constructor(
     public navCtrl: NavController,
@@ -35,7 +39,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
-    console.log(this.orderInformation);
+    console.log('this.navParams', this.navParams);
     this.name = this.navParams.data[3];
     this.orderPrice = this.navParams.data[2];
   }
@@ -43,6 +47,8 @@ export class OrderSubmitPage {
   home() {
     this.navCtrl.setRoot(HomePage, this.navParams[1]);
   }
+
+  
 
   confirm() {
     // this.confirmOrder.push();
@@ -60,11 +66,26 @@ export class OrderSubmitPage {
     this.orderInformation.items.splice(index, 1);
   }
 
+  totalPrice() {
+    for(let i=0; i<this.orderPrice.length; i++){
+      console.log("Price: " + this.orderPrice[i]);
+      this.total += this.orderPrice[i];
+      console.log("Subtotal:" + this.total)
+    }
+    console.log("Total: " + this.total);
+    // this.orderPrice
+  
+  }
+
   ionViewDidLoad() {
     console.log("ionViewDidLoad OrderSubmitPage");
+    this.totalPrice();
 
     // console.log(this.orderInformation);
     console.log("Name: " + this.name);
+    console.log("orderPrice");
+    console.log(this.orderPrice);
+  
     console.log(this.orderInformation);
   }
 

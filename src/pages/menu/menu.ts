@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
 import {AlertController, NavController, ToastController } from 'ionic-angular';
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
@@ -219,10 +219,9 @@ export class MenuPage{
       firebase.auth().onAuthStateChanged((user) => {
           if (user || user !== null) {
               // User is signed in.
-              console.log(user.displayName);
-              this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
-          } else {
-
+              console.log('test price', this.orderPrice);
+              this.navCtrl.setRoot(OrderSubmitPage, [{items: this.orderItems}, user.displayName, this.orderPrice])
+          } else if (user === null){
               // User is signed out.
               let alert = this.alertCtrl.create({
                   title: 'Before You Submit...',
