@@ -40,7 +40,7 @@ export class OrderSubmitPage {
   ) {
     this.orderInformation = this.navParams.data[0];
     console.log('this.navParams', this.navParams);
-    this.name = this.navParams.data[3];
+    this.name = this.navParams.data[1];
     this.orderPrice = this.navParams.data[2];
   }
 
