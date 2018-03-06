@@ -17,8 +17,8 @@
       <ion-card>
         <div class="menuButtonBox">
           <button *ngIf="!loggedIn" ion-button color="mtech-red" (click)="gotToLogin()">LOGIN OR SIGN UP</button>
-          <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
           <button *ngIf="loggedIn" ion-button color="mtech-red" (click)="logOut()">LOGOUT</button>
+          <button ion-button color="mtech-red" (click)="gotToMenu()">MENU </button>
         </div>
       </ion-card>
       <div>

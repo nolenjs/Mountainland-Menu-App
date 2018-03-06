@@ -22,17 +22,17 @@ export class HomePage implements OnDestroy{
 
   ionViewDidLoad(){
       console.log("ionViewDidLoad");
+      let user = firebase.auth().currentUser;
+      console.log('user', user);
+      this.loggedIn = !!user;
+      console.log("New ");
+      this.logButtonTxt = this.loggedIn ? "VIEW OUR MENU OR LOGOUT" : "LOGIN OR GO TO OUR MENU";
       this.cdr.detectChanges();
-      firebase.auth().onAuthStateChanged((user) => {
-          console.log('user', user);
-          this.loggedIn = !!user;
-          console.log("New ");
-          this.logButtonTxt = this.loggedIn ? "VIEW OUR MENU OR LOGOUT" : "LOGIN OR GO TO OUR MENU";
-      });
   }
 
   logOut(){
       firebase.auth().signOut().then(() => {
+          this.loggedIn = false;
           // Sign-out successful.
           let toast = this.toastCtrl.create({
               message: "Signed Out",

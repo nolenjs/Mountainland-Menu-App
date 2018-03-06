@@ -55,7 +55,7 @@ export class LoginPage{
               console.log(googleUser);
               console.log(googleUser.displayName);
               //the false means wasn't logged in earlier
-              this.pushPage();
+              this.pushPage(googleUser.displayName);
           })
             .catch((error) => {
               // Handle Errors here.
@@ -73,8 +73,7 @@ export class LoginPage{
             if (this.confirm === this.user.password){
               try {
                 const result = await this.afAuth.auth.createUserWithEmailAndPassword(
-                    this.user.email,
-                    this.user.password
+                    this.user.email, this.user.password
                 );
                   console.log(result);
                   let emailUser = firebase.auth().currentUser;
@@ -83,7 +82,22 @@ export class LoginPage{
                       displayName: this.firstName + ' ' + this.lastName,
                       photoURL: ""
                   });
-                  this.displayResults(result);
+                  if (result){
+                      this.user = result;
+                      console.log(result);
+                      console.log("Signed in!!!");
+                      console.log(this.firstName + ' ' + this.lastName);
+                      //the false means wasn't logged in earlier
+                      this.pushPage(this.firstName + ' ' + this.lastName);
+                  }
+                  else{
+                      let toast = this.toastCtrl.create({
+                          message: "Please verify that your email or password is correct",
+                          duration: 1800,
+                          position: 'top'
+                      });
+                      toast.present()
+                  }
               }
               catch (e) {
                   this.showError(e)
@@ -108,10 +122,12 @@ export class LoginPage{
 
         displayResults(result){
             if (result){
+                this.user = result;
+                console.log(result);
                 console.log("Signed in!!!");
-                console.log(this.user.name);
+                console.log(result.displayName);
                 //the false means wasn't logged in earlier
-                this.pushPage();
+                this.pushPage(result.displayName);
             }
             else{
                 let toast = this.toastCtrl.create({
@@ -134,11 +150,12 @@ export class LoginPage{
         toast.present();
       }
 
-      pushPage(){
+      pushPage(userName){
           if (this.navParams.data[0] === false){
               this.navCtrl.setRoot(OrderSubmitPage, [
                   this.navParams.data[1],
                   this.navParams.data[2],
+                  userName
               ])
           }
           else{
