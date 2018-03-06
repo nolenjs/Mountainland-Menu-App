@@ -26,6 +26,7 @@ export class OrderSubmitPage {
   orderPrice=[];
   name;
   total: number = 0;
+  length;
 
  
 
@@ -38,7 +39,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
-    console.log(this.orderInformation);
+    console.log('this.navParams', this.navParams);
     this.name = this.navParams.data[3];
     this.orderPrice = this.navParams.data[2];
   }

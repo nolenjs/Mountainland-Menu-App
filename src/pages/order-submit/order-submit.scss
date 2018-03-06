@@ -8,47 +8,24 @@
 
 // }
 
-// ion-card-content {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-// }
+ion-card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
-// .hover-delete {
-//     visibility: hidden;
-// }
+.hover-delete {
+    visibility: hidden;
+}
 
-// .menu-item:hover .hover-delete {
-//     visibility: visible;
-// }
+.menu-item:hover .hover-delete {
+    visibility: visible;
+}
 
-// ion-content {
-//     background-color: white;
-// }
 
-// ion-card {
-//     margin: auto;
-//     max-width: 400px;
 
-// }
-
-// ion-card-content {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// .hover-delete {
-//     visibility: hidden;
-// }
-
-// .menu-item:hover .hover-delete {
-//     visibility: visible;
-// }
-
-.home-button {
+.home{
     float: right;
     padding: 10px;
     width: 30px;
@@ -56,7 +33,6 @@
     border-radius: 2px;
     // margin-right: 900px;
 }
-
 
 
 

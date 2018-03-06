@@ -219,8 +219,8 @@ export class MenuPage{
       firebase.auth().onAuthStateChanged((user) => {
           if (user || user !== null) {
               // User is signed in.
-              console.log(user.displayName);
-              this.navCtrl.setRoot(OrderSubmitPage, [{items: this.orderItems}, user.displayName])
+              console.log('test price', this.orderPrice);
+              this.navCtrl.setRoot(OrderSubmitPage, [{items: this.orderItems}, user.displayName, this.orderPrice])
           } else if (user === null){
               // User is signed out.
               let alert = this.alertCtrl.create({
