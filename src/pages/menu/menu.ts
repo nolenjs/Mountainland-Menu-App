@@ -102,7 +102,7 @@ export class MenuPage implements OnDestroy{
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
 
-    //this.date = new Date('February 21, 2018 8:01:00'); //23 = friday 21 = wednesday
+    this.date = new Date('February 21, 2018 11:01:00'); //23 = friday 21 = wednesday
     this.day = this.date.getDay();
 
     this.updateTime();
