@@ -1,19 +1,19 @@
-// ion-content {
-//     background-color: white;
+// // // ion-content {
+// // //     background-color: white;
+// // // }
+
+// // .card {
+// //     margin: auto;
+// //     max-width: 400px;
+
+// // }
+
+// ion-card-content {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
 // }
-
-// .card {
-//     margin: auto;
-    // max-width: 400px;
-
-// }
-
-ion-card-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
 
 .hover-delete {
     visibility: hidden;
@@ -23,16 +23,15 @@ ion-card-content {
     visibility: visible;
 }
 
-
-
-.home{
-    float: right;
-    padding: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 2px;
-    // margin-right: 900px;
+#order-submit-ion-icon {
+    margin-left: auto;
 }
+
+// .home{
+//     right: 20px;
+    
+//     // margin-right: 900px;
+// }
 
 
 
@@ -40,14 +39,6 @@ ion-card-content {
     float: right
 }
 
-.blur{
-  height: 100%;
-  width: 100%;
-  background-image: url("../../assets/imgs/home-background.png");
-  background-size: cover;
-  filter: blur(10px);
-  z-index: -1;
-}
 
 .total{
     float: right;
