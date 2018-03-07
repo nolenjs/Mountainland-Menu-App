@@ -67,6 +67,8 @@ export class OrderSubmitPage {
   delete(index) {
     this.total -= this.orderPrice[index];
     this.orderInformation.splice(index, 1);
+    this.orderPrice.splice(index, 1);
+
   }
 
   totalPrice() {
