@@ -188,11 +188,11 @@ export class MenuPage implements OnDestroy{
             options: [this.breadType, this.numberOfEggs, this.styleOfEggs, this.meat, this.cheese]
         };
 
-        this.breadType = '' ;
-        this.numberOfEggs = '';
-        this.styleOfEggs = '' ;
-        this.meat= '' ;
-        this.cheese = '';
+        // this.breadType = '' ;
+        // this.numberOfEggs = '';
+        // this.styleOfEggs = '' ;
+        // this.meat= '' ;
+        // this.cheese = '';
 
     }
 
