@@ -23,6 +23,7 @@ import { HomePage } from "../home/home";
 })
 export class OrderSubmitPage {
   orderInformation;
+  orderOptions;
   orderPrice=[];
   name;
   total: number = 0;
@@ -39,6 +40,7 @@ export class OrderSubmitPage {
     public db: AngularFireDatabase
   ) {
     this.orderInformation = this.navParams.data[0];
+    this.orderOptions = this.navParams.data[1];
     console.log('this.navParams', this.navParams);
     this.name = this.navParams.data[1];
     this.orderPrice = this.navParams.data[2];

@@ -40,6 +40,8 @@ export class MenuPage implements OnDestroy{
 
   private foodOptions;
 
+  private pushedOrder = [];
+
   private lunchSubscription;//Temperary?
     private breakfastSubscription;
   hour = new Date().getHours();
@@ -171,32 +173,52 @@ export class MenuPage implements OnDestroy{
 
   order(itemName, item, price) {
 
-    this.orderItems.push(item);
-
-    this.orderPrice.push(price);
+    let pushedItem = {
+        itemName: item,
+        price: price,
+        options: []
+    };
 
     if(itemName === 'Breakfast Sandwich'){
-        this.orderOptions.push(`${this.breadType}, ${this.numberOfEggs}, ${this.styleOfEggs}, ${this.meat}, ${this.cheese}`);
+        pushedItem = {
+            itemName: item,
+            price: price,
+            options: [this.breadType, this.numberOfEggs, this.styleOfEggs, this.meat, this.cheese]
+        };
 
         this.breadType = '' ;
         this.numberOfEggs = '';
         this.styleOfEggs = '' ;
         this.meat= '' ;
         this.cheese = '';
+
     }
 
     else if(itemName === 'Omelet'){
+
+        let omletOptions = [];
+
         for(let i = 0; i< this.omeletToppings.length; i++){
             if(this.omeletToppings[i].checked === true) {
-                this.orderOptions.push(this.omeletToppings[i].name);
+                omletOptions.push(this.omeletToppings[i].name);
             }
         }
+
+        pushedItem = {
+            itemName: item,
+            price: price,
+            options: [omletOptions]
+        };
     }
 
     else {
       if(this.foodOptions){
-        this.orderOptions.push(this.foodOptions);
-        this.foodOptions = '';
+          pushedItem = {
+              itemName: item,
+              price: price,
+              options: [this.foodOptions]
+          };
+          this.foodOptions = '';
       }
     }
 
@@ -214,15 +236,20 @@ export class MenuPage implements OnDestroy{
     console.log(this.orderPrice);
 
     toast.present();
+
+    this.pushedOrder.push(pushedItem);
   }
 
 
   ordersubmitted(){
+
+      console.log('options');
+      console.log(this.orderOptions);
       let user = firebase.auth().currentUser;
       if (user || user !== null) {
           // User is signed in.
           console.log(user.displayName);
-          this.navCtrl.push(OrderSubmitPage, [{items: this.orderItems}, this.orderOptions, this.orderPrice ,user.displayName])
+          this.navCtrl.push(OrderSubmitPage, [this.pushedOrder, this.orderOptions, this.orderPrice ,user.displayName])
       } else {
 
           // User is signed out.
