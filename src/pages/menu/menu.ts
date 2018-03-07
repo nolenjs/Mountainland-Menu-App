@@ -173,6 +173,8 @@ export class MenuPage implements OnDestroy{
 
   order(itemName, item, price) {
 
+      this.orderPrice.push(price);
+
     let pushedItem = {
         itemName: item,
         price: price,
