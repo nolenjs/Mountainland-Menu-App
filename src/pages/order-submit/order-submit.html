@@ -22,13 +22,15 @@
 
         <ion-list>
 
-            <ion-item class="menu-item" *ngFor="let item of orderInformation.items; let i = index;">
+            <ion-item class="menu-item" *ngFor="let item of orderInformation; let i = index; ">
 
                 <ion-icon ios="ios-remove-circle" md="md-remove-circle" id="{{item?.id}}" (click)="delete(i)">
 
                 </ion-icon>
-                {{item}}
-                <div>{{price | currency}}</div>
+                {{item.itemName}}
+                <div>{{item.price | currency}}</div>
+                <p>{{item.options}}</p>
+
             </ion-item>
         </ion-list>
 
