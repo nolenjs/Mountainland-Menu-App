@@ -24,6 +24,7 @@ export class MenuPage implements OnDestroy{
 
   private lunchOpenTime: number = 11;
   private lunchCloseTime: number = 20;
+  private closed = false;
 
   private wednesday: number = 3;
 
@@ -102,7 +103,7 @@ export class MenuPage implements OnDestroy{
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
 
-    this.date = new Date('February 21, 2018 11:01:00'); //23 = friday 21 = wednesday
+    this.date = new Date('February 21, 2018 8:01:00'); //23 = friday 21 = wednesday
     this.day = this.date.getDay();
 
     this.updateTime();
@@ -123,6 +124,7 @@ export class MenuPage implements OnDestroy{
       this.getBreakfast();
       this.breakfastTime = true;
       this.lunchTime = false;
+      this.closed = false;
     }
 
     else if (this.hour >= this.lunchOpenTime && this.hour < this.lunchCloseTime
@@ -130,6 +132,11 @@ export class MenuPage implements OnDestroy{
       this.getLunchAndDinner();
       this.breakfastTime = false;
       this.lunchTime = true;
+        this.closed = false;
+
+    }
+    else {
+        this.closed = true;
     }
 
     if(this.day === this.wednesday ){

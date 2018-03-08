@@ -7,6 +7,8 @@
 
 
 <ion-content>
+
+    <h1 style="text-align: center; color: #fff" *ngIf="closed === true">Sorry We Are Currently Closed</h1>
   <!--Breakfast-->
   <div *ngIf="breakfastTime">
 
@@ -315,7 +317,10 @@
       </ion-card-content>
     </ion-card>
 
-    <button ion-button color="mtech-red" icon-end="md-restaurant" class="submit-button" (click)="ordersubmitted();"><p class="alignright">Submit Order</p></button>
+    <button ion-button color="mtech-red" icon-end="md-restaurant"
+            class="submit-button" (click)="ordersubmitted();">
+      <p class="alignright">Submit Order</p>
+    </button>
 
   </div>
 
