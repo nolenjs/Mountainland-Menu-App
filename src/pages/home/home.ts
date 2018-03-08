@@ -29,6 +29,7 @@ export class HomePage implements OnDestroy {
             console.log(this.loggedIn);
             this.cdr.detectChanges();
         });
+        this.cdr.detectChanges();
     }
 
     logOut() {
