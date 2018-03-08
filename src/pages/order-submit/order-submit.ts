@@ -44,6 +44,8 @@ export class OrderSubmitPage {
     console.log('this.navParams', this.navParams);
     this.name = this.navParams.data[1];
     this.orderPrice = this.navParams.data[2];
+    console.log(this.orderPrice);
+    console.log(this.navParams.data);
   }
 
   home() {
