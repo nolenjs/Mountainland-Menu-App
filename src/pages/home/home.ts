@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
 
 import * as firebase from 'firebase/app';
 
@@ -8,61 +8,63 @@ import {LoginPage} from '../login/login';
 
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  styles: []
+    selector: 'page-home',
+    templateUrl: 'home.html',
+    styles: []
 })
-export class HomePage implements OnDestroy{
-  //Login or logout button?
+export class HomePage implements OnDestroy {
+    //Login or logout button?
 
-  loggedIn: boolean;
-  logButtonTxt: string;
+    loggedIn: boolean;
+    user: any;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private cdr: ChangeDetectorRef){}
+    constructor(public navCtrl: NavController, private toastCtrl: ToastController, private cdr: ChangeDetectorRef) {
+    }
 
-  ionViewDidLoad(){
-      console.log("ionViewDidLoad");
-      let user = firebase.auth().currentUser;
-      console.log('user', user);
-      this.loggedIn = !!user;
-      console.log("New ");
-      this.logButtonTxt = this.loggedIn ? "VIEW OUR MENU OR LOGOUT" : "LOGIN OR GO TO OUR MENU";
-      this.cdr.detectChanges();
-  }
+    ionViewDidLoad() {
+        console.log("ionViewDidLoad");
+        this.user = firebase.auth().onAuthStateChanged(status => {
+            console.log('status', status);
+            this.loggedIn = !!status;
+            console.log(this.loggedIn);
+            this.cdr.detectChanges();
+        });
+    }
 
-  logOut(){
-      firebase.auth().signOut().then(() => {
-          this.loggedIn = false;
-          // Sign-out successful.
-          let toast = this.toastCtrl.create({
-              message: "Signed Out",
-              duration: 1800,
-              position: 'top'
-          });
-          toast.present();
-      }).catch((error) => {
-          // An error happened.
-          console.error(error);
-          let toast = this.toastCtrl.create({
-              message: error.message,
-              duration: 1800,
-              position: 'top'
-          });
-          toast.present();
-      });
-  }
+    logOut() {
+        firebase.auth().signOut().then(() => {
+            this.loggedIn = false;
+            // Sign-out successful.
+            let toast = this.toastCtrl.create({
+                message: "Signed Out",
+                duration: 1800,
+                position: 'top'
+            });
+            toast.present();
+        }).catch((error) => {
+            // An error happened.
+            console.error(error);
+            let toast = this.toastCtrl.create({
+                message: error.message,
+                duration: 1800,
+                position: 'top'
+            });
+            toast.present();
+        });
+    }
 
-  gotToMenu() {
-    this.navCtrl.push(MenuPage);
-  }
+    gotToMenu() {
+        this.navCtrl.push(MenuPage,);
+    }
 
-  gotToLogin() {
-    this.navCtrl.push(LoginPage);
-  }
+    gotToLogin() {
+        this.navCtrl.push(LoginPage);
+    }
 
-  ngOnDestroy(){
-      this.cdr.detach();
-  }
+    ngOnDestroy() {
+        this.cdr.detach();
+        // this.user.unsubscribe();
+    }
 }
 
 

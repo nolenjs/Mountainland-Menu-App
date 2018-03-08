@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {AlertController, NavController, ToastController } from 'ionic-angular';
+import {AlertController, NavController, ToastController} from 'ionic-angular';
 import { MenuApiProvider } from '../../providers/menu-api/menu-api';
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {LoginPage} from "../login/login";
@@ -101,7 +101,6 @@ export class MenuPage implements OnDestroy{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
-
     this.date = new Date('February 21, 2018 8:01:00'); //23 = friday 21 = wednesday
     this.day = this.date.getDay();
 
@@ -233,7 +232,7 @@ export class MenuPage implements OnDestroy{
           });
           alert.present();
 
-          this.navCtrl.push(LoginPage, [false, {items: this.orderItems}])
+          this.navCtrl.push(LoginPage, [false, {items: this.orderItems}, this.orderPrice])
       }
 
   }
