@@ -251,7 +251,7 @@ export class MenuPage implements OnDestroy{
       if (user || user !== null) {
           // User is signed in.
           console.log(user.displayName);
-          this.navCtrl.push(OrderSubmitPage, [this.pushedOrder, this.orderOptions, this.orderPrice ,user.displayName])
+          this.navCtrl.push(OrderSubmitPage, [this.pushedOrder, this.orderOptions, this.orderPrice , user.displayName])
       } else {
 
           // User is signed out.
@@ -262,7 +262,7 @@ export class MenuPage implements OnDestroy{
           });
           alert.present();
 
-          this.navCtrl.push(LoginPage, [false, {items: this.orderItems}, this.orderPrice])
+          this.navCtrl.push(LoginPage, [false, this.pushedOrder, this.orderOptions, this.orderPrice])
       }
 
   }

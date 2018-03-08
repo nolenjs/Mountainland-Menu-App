@@ -42,7 +42,7 @@ export class OrderSubmitPage {
     this.orderInformation = this.navParams.data[0];
     this.orderOptions = this.navParams.data[1];
     console.log('this.navParams', this.navParams);
-    this.name = this.navParams.data[1];
+    this.name = this.navParams.data[3];
     this.orderPrice = this.navParams.data[2];
     console.log(this.orderPrice);
     console.log(this.navParams.data);

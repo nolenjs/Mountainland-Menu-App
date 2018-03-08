@@ -153,10 +153,12 @@ export class LoginPage{
       pushPage(userName){
           console.log(this.navParams.data[0]);
           if (this.navParams.data[0] === false){
-              this.navCtrl.setRoot(OrderSubmitPage, [
+              this.navCtrl.push(OrderSubmitPage, [
                   this.navParams.data[1],
-                  userName,
-                  this.navParams.data[2]
+                  this.navParams.data[2],
+                  this.navParams.data[3],
+                  userName
+
               ])
           }
           else{
