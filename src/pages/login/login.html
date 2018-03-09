@@ -37,9 +37,9 @@
     </ion-list>
     <button ion-button *ngIf="!registering" color='light' (click)="login(false)">GOOGLE LOGIN</button>
     <button *ngIf="!registering" ion-button (click)="login(true)">LOGIN</button>
+    <button *ngIf="registering" ion-button color="light" (click)="changeShow(false)">LOGIN</button>
     <button *ngIf="!registering" ion-button color="light" (click)="changeShow(true)">SIGN UP</button>
     <button *ngIf="registering" ion-button (click)="register()">REGISTER</button>
-    <button *ngIf="registering" ion-button color="light" (click)="changeShow(false)">LOGIN</button>
   </ion-card>
 </ion-content>
 <div class="blur"></div>

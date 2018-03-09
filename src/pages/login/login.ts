@@ -120,7 +120,7 @@ export class LoginPage{
       }
 
 
-        displayResults(result){
+      displayResults(result){
             if (result){
                 this.user = result;
                 console.log(result);
@@ -131,13 +131,12 @@ export class LoginPage{
             }
             else{
                 let toast = this.toastCtrl.create({
-                    message: "Please verify that your email or password is correct",
+                    message: "Please verify that your email or password is typed correctly",
                     duration: 1800,
                     position: 'top'
                 });
                 toast.present()
             }
-
       }
 
       showError(error){
